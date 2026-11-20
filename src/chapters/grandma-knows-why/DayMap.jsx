@@ -8,10 +8,6 @@ import { pop } from '../../lib/sound.js'
 import ResetButton from '../../components/ResetButton.jsx'
 import './theme.css'
 
-const TINT_MAP = {
-  sky: '#E5F6FE', tomato: '#FFE1DD', sun: '#FFF3C4', grass: '#DFF5D3',
-  grape: '#F2E9FF', sand: '#F4E9D3', warm: '#F0E1CE',
-}
 const ACCENT_MAP = {
   sky: '#4EC5F1', tomato: '#FF6B5A', sun: '#FFC93C', grass: '#6BCB77',
   grape: '#A46BE8', sand: '#D9C3A5', warm: '#B08553',

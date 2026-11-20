@@ -8,6 +8,8 @@ import { setEnabled as setSoundEnabled, isEnabled as isSoundEnabled, pop } from 
 import { getScore } from '../lib/storage.js'
 import { useChapter } from '../context/ChapterContext.jsx'
 
+const NO_PAGES = []
+
 export default function AppShell({ children, onReadAloud }) {
   const location = useLocation()
   const navigate = useNavigate()
@@ -17,7 +19,7 @@ export default function AppShell({ children, onReadAloud }) {
   const [score, setScore] = useState(() => getScore(chapter?.id, chapter?.activities))
   const [tocOpen, setTocOpen] = useState(false)
 
-  const pages = chapter?.pages || []
+  const pages = chapter?.pages || NO_PAGES
   const chapterPath = chapter ? `/${chapter.id}` : ''
 
   const idx = useMemo(() => {
@@ -32,10 +34,9 @@ export default function AppShell({ children, onReadAloud }) {
   const next = idx < pages.length - 1 ? pages[idx + 1] : null
   const progress = pages.length ? ((idx + 1) / pages.length) * 100 : 0
 
-  useEffect(() => {
-    stop(); setTalking(false); window.scrollTo(0, 0)
-    setScore(getScore(chapter?.id, chapter?.activities))
-  }, [location.pathname, chapter])
+  // AppShell is remounted for every page (routes are keyed on the pathname),
+  // so this runs once per page: stop any speech and start at the top.
+  useEffect(() => { stop(); window.scrollTo(0, 0) }, [])
 
   useEffect(() => {
     function refresh() { setScore(getScore(chapter?.id, chapter?.activities)) }

@@ -1,4 +1,4 @@
-import { Fragment, useMemo, useState, useEffect } from 'react'
+import { Fragment, useMemo, useState } from 'react'
 import { useLocation, useNavigate, Link } from 'react-router-dom'
 import { UNITS, unitBySlug, unitActivityKey } from './units.js'
 import { markDone } from '../../lib/storage.js'
@@ -7,7 +7,8 @@ import { speak } from '../../lib/tts.js'
 import { pop, chime } from '../../lib/sound.js'
 import HangulOnlyToggle from '../hello-hangul/components/HangulOnlyToggle.jsx'
 import YunasPostcard from '../hello-hangul/components/YunasPostcard.jsx'
-import { RuleCard, PhraseTile, CARD_BUTTON_RESET } from '../hello-hangul/components/ko-parts.jsx'
+import { RuleCard, PhraseTile } from '../hello-hangul/components/ko-parts.jsx'
+import { CARD_BUTTON_RESET } from '../hello-hangul/components/ko-styles.js'
 import '../hello-hangul/theme.css'
 
 /* -------------------- kind: 'grammar' -------------------- */
@@ -136,7 +137,7 @@ function StoryStage({ unit, onFinished }) {
     if (scene < unit.scenes.length - 1) {
       setScene(scene + 1); setChoice(null)
     } else {
-      onFinished && onFinished()
+      if (onFinished) onFinished()
     }
   }
 
@@ -239,7 +240,8 @@ export default function UnitRunner() {
   const unit = unitBySlug(slug)
 
   const [phase, setPhase] = useState('intro') // intro | body | postcard
-  useEffect(() => { setPhase('intro') }, [slug])
+  // Routes are keyed on the pathname in App.jsx, so a new unit remounts this
+  // component and phase starts at 'intro' again.
 
   if (!unit) return <div style={{ padding: 30 }}>Unit not found.</div>
 

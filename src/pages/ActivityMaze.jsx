@@ -46,7 +46,7 @@ export default function ActivityMaze() {
       }
       return np
     })
-  }, [won])
+  }, [won, chapter.id])
 
   useEffect(() => {
     function onKey(e) {

@@ -191,7 +191,7 @@ export const chapters = [
     id: 'grandma-knows-why',
     title: 'Grandma Knows Why',
     subtitle: "A whole day at Grandma's. Every rule has a reason.",
-    tagline: 'Because \"because I said so\" was never enough.',
+    tagline: 'Because "because I said so" was never enough.',
     emoji: '👵',
     accent: '#A46BE8',
     heroBg: 'linear-gradient(135deg,#F2E9FF 0%, #A46BE8 100%)',

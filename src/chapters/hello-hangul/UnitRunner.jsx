@@ -1,6 +1,6 @@
 import { useMemo, useEffect, useState } from 'react'
 import { useLocation, useNavigate, Link } from 'react-router-dom'
-import { UNITS, unitBySlug, unitActivityKey } from './units.js'
+import { unitBySlug, unitActivityKey } from './units.js'
 import { markDone } from '../../lib/storage.js'
 import { useChapter } from '../../context/ChapterContext.jsx'
 import { speak } from '../../lib/tts.js'
@@ -228,9 +228,26 @@ function NumbersStage() {
     ['칠','chil','seven'],['팔','pal','eight'],['구','gu','nine'],
     ['십','sip','ten'],
   ]
-  const Row = ({ items, tint }) => (
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
+      <NumberRow items={native} tint="#DFF5D3" label="NATIVE · for counting things" />
+      <NumberRow items={sino} tint="#E5F6FE" label="SINO · for money and clocks" />
+      <div className="hh-card">
+        <div className="hh-eyebrow" style={{ marginBottom: 4 }}>THE TRICK</div>
+        <div style={{ fontFamily: 'var(--hh-font-body)', fontWeight: 700, fontSize: 18 }}>
+          Point-and-count → native. On a price tag or a clock → Sino.
+        </div>
+      </div>
+    </div>
+  )
+}
+
+// One row of the numbers table; module-level so React keeps its identity
+// between renders.
+function NumberRow({ items, tint, label }) {
+  return (
     <div className="hh-card" style={{ background: tint }}>
-      <div className="hh-eyebrow" style={{ marginBottom: 6 }}>{items === native ? 'NATIVE · for counting things' : 'SINO · for money and clocks'}</div>
+      <div className="hh-eyebrow" style={{ marginBottom: 6 }}>{label}</div>
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)', gap: 6 }}>
         {items.map(([k, r, e], i) => (
           <button
@@ -243,18 +260,6 @@ function NumbersStage() {
             <span style={{ fontFamily: 'var(--hh-font-body)', fontWeight: 500, fontSize: 12, color: 'var(--hh-ink-soft)' }}>{e}</span>
           </button>
         ))}
-      </div>
-    </div>
-  )
-  return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
-      <Row items={native} tint="#DFF5D3" />
-      <Row items={sino}   tint="#E5F6FE" />
-      <div className="hh-card">
-        <div className="hh-eyebrow" style={{ marginBottom: 4 }}>THE TRICK</div>
-        <div style={{ fontFamily: 'var(--hh-font-body)', fontWeight: 700, fontSize: 18 }}>
-          Point-and-count → native. On a price tag or a clock → Sino.
-        </div>
       </div>
     </div>
   )
@@ -429,7 +434,9 @@ export default function UnitRunner() {
   }, [location.pathname])
 
   const [screen, setScreen] = useState(0)
-  useEffect(() => { setScreen(0); window.scrollTo(0, 0) }, [location.pathname])
+  // Routes are keyed on the pathname in App.jsx, so a new route remounts this
+  // component with screen = 0; only the scroll reset is needed here.
+  useEffect(() => { window.scrollTo(0, 0) }, [])
 
   if (!unit) { navigate(`/${chapter.id}/map`, { replace: true }); return null }
 

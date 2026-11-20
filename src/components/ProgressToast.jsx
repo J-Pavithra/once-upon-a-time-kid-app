@@ -8,23 +8,23 @@ function personalize(text, name) {
   return text.replace(/\{name\}/g, n)
 }
 
+function milestoneFor(chapter, pageIndex) {
+  const m = chapter?.milestones?.[pageIndex]
+  if (!m) return null
+  return { emoji: m.emoji, title: personalize(m.title, getName()), note: m.note }
+}
+
 export default function ProgressToast({ pageIndex }) {
   const chapter = useChapter()
-  const [show, setShow] = useState(null)
+  // Mounted fresh for every page, so the milestone is known at first render.
+  const [show, setShow] = useState(() => milestoneFor(chapter, pageIndex))
 
   useEffect(() => {
-    const milestone = chapter?.milestones?.[pageIndex]
-    if (!milestone) { setShow(null); return }
-    const name = getName()
-    setShow({
-      emoji: milestone.emoji,
-      title: personalize(milestone.title, name),
-      note: milestone.note,
-    })
+    if (!show) return undefined
     chime()
     const t = setTimeout(() => setShow(null), 3400)
     return () => clearTimeout(t)
-  }, [pageIndex, chapter])
+  }, [show])
 
   return (
     <div style={{ position: 'sticky', top: 8, zIndex: 30, pointerEvents: 'none' }} className="no-print" aria-live="polite">

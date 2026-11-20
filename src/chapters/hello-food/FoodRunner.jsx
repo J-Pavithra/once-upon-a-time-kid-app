@@ -5,7 +5,7 @@ import StageOpener from './openers/StageOpener.jsx'
 import Journey from './screens/Journey.jsx'
 import SillyBit from './screens/SillyBit.jsx'
 import GrownUp from './screens/GrownUp.jsx'
-import { FOODS, foodBySlug, foodActivityKey } from './foods.js'
+import { foodBySlug, foodActivityKey } from './foods.js'
 import { markDone } from '../../lib/storage.js'
 import { useChapter } from '../../context/ChapterContext.jsx'
 import './theme.css'
@@ -23,7 +23,9 @@ export default function FoodRunner() {
   }, [location.pathname])
 
   const [screen, setScreen] = useState(0)
-  useEffect(() => { setScreen(0); window.scrollTo(0, 0) }, [location.pathname])
+  // Routes are keyed on the pathname in App.jsx, so a new route remounts this
+  // component with screen = 0; only the scroll reset is needed here.
+  useEffect(() => { window.scrollTo(0, 0) }, [])
 
   if (!food) { navigate(`/${chapter.id}/kitchen`, { replace: true }); return null }
 

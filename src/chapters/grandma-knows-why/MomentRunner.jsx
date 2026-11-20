@@ -22,7 +22,9 @@ export default function MomentRunner() {
   }, [location.pathname])
 
   const [screen, setScreen] = useState(0)
-  useEffect(() => { setScreen(0); window.scrollTo(0, 0) }, [location.pathname])
+  // Routes are keyed on the pathname in App.jsx, so a new route remounts this
+  // component with screen = 0; only the scroll reset is needed here.
+  useEffect(() => { window.scrollTo(0, 0) }, [])
 
   if (!moment) { navigate(`/${chapter.id}/day`, { replace: true }); return null }
 

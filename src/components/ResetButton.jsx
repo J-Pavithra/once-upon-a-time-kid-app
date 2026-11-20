@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { resetChapter } from '../lib/storage.js'
-import { pop, wrong } from '../lib/sound.js'
+import { pop } from '../lib/sound.js'
 
 /**
  * Small "Start over" button that opens a confirm modal.

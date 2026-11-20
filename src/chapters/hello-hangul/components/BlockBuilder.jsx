@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { speak } from '../../../lib/tts.js'
 import { pop, chime, ding } from '../../../lib/sound.js'
 
@@ -26,17 +26,6 @@ export default function BlockBuilder({
   const [placed, setPlaced] = useState([])
   const [used, setUsed] = useState(new Set())
   const [solved, setSolved] = useState(false)
-  const done = placed.length === target.length
-
-  useEffect(() => {
-    if (done && !solved) {
-      setSolved(true)
-      chime()
-      setTimeout(() => { ding(); speak(koreanWord, { voice: 'Seoyeon' }) }, 300)
-      setTimeout(() => onSolved && onSolved(), 1800)
-    }
-  }, [done, solved, koreanWord, onSolved])
-
   function tapLetter(letter, idx) {
     if (solved) return
     if (placed.length >= target.length) return
@@ -45,6 +34,13 @@ export default function BlockBuilder({
       pop()
       setPlaced(p => [...p, letter])
       setUsed(u => new Set([...u, idx]))
+      if (placed.length + 1 === target.length) {
+        // Last slot filled: snap, speak the word, then hand back.
+        setSolved(true)
+        chime()
+        setTimeout(() => { ding(); speak(koreanWord, { voice: 'Seoyeon' }) }, 300)
+        setTimeout(() => { if (onSolved) onSolved() }, 1800)
+      }
     } else {
       // wrong — do nothing (no error state per brief)
     }

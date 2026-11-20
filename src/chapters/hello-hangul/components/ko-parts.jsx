@@ -10,11 +10,7 @@
 import { speak } from '../../../lib/tts.js'
 import { pop } from '../../../lib/sound.js'
 
-export const CARD_BUTTON_RESET = {
-  color: 'inherit', font: 'inherit', background: 'inherit',
-  borderRadius: 'inherit', padding: 'inherit',
-  boxShadow: 'none', transform: 'none',
-}
+import { CARD_BUTTON_RESET } from './ko-styles.js'
 
 export function RuleCard({ rule }) {
   return (
@@ -41,7 +37,7 @@ export function RuleCard({ rule }) {
 }
 
 export function PhraseTile({ line, roman, meaning, scene, onHear }) {
-  function hear() { pop(); speak(line, { voice: 'Seoyeon' }); onHear && onHear() }
+  function hear() { pop(); speak(line, { voice: 'Seoyeon' }); if (onHear) onHear() }
   return (
     <button
       className="hh-card"

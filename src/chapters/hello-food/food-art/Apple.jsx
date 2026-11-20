@@ -29,9 +29,6 @@ export function AppleCut({ size = 220, cut = 0 }) {
               const a = (i / 5) * Math.PI * 2 - Math.PI / 2
               const cx1 = 110 + Math.cos(a) * 24 * cut
               const cy1 = 120 + Math.sin(a) * 24 * cut
-              const a2 = ((i + 0.5) / 5) * Math.PI * 2 - Math.PI / 2
-              const px = 110 + Math.cos(a2) * 34 * cut
-              const py = 120 + Math.sin(a2) * 34 * cut
               return (
                 <g key={i}>
                   {/* seed */}

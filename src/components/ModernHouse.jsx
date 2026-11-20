@@ -1,8 +1,5 @@
 
 export default function ModernHouse({ night = false, size = 260 }) {
-  const skyGrad = night
-    ? 'linear-gradient(180deg,#171B3A 0%, #302559 60%, #4B3A72 100%)'
-    : 'linear-gradient(180deg,#DCF0FC 0%, #A5D8F3 100%)'
   return (
     <svg viewBox="0 0 260 200" width={size} height={size * 200 / 260} aria-label="modern home">
       <defs>

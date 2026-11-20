@@ -1,13 +1,12 @@
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect } from 'react'
 import { splash, chime } from '../../../lib/sound.js'
 
 export default function BubbleWash({ onDone }) {
   const [bubbles, setBubbles] = useState([])
-  const [specks, setSpecks] = useState(() => Array.from({ length: 14 }, (_, i) => ({
+  const [specks, setSpecks] = useState(() => Array.from({ length: 14 }, () => ({
     x: 30 + Math.random() * 340, y: 30 + Math.random() * 180, gone: false,
   })))
   const [rubs, setRubs] = useState(0)
-  const rafRef = useRef(null)
 
   useEffect(() => {
     if (rubs >= 20) { chime(); setTimeout(() => onDone(), 900) }

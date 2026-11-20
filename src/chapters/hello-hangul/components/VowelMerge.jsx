@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { speak } from '../../../lib/tts.js'
 import { pop, chime } from '../../../lib/sound.js'
 
@@ -12,19 +12,18 @@ export default function VowelMerge({ pair, onSolved }) {
   const [step, setStep] = useState(0)     // 0 nothing placed, 1 a placed, 2 b placed
   const [merging, setMerging] = useState(false)
 
-  useEffect(() => {
-    if (step === 2 && !merging) {
-      setMerging(true)
-      chime()
-      setTimeout(() => { speak(pair.result, { voice: 'Seoyeon' }) }, 350)
-      setTimeout(() => onSolved && onSolved(), 1600)
-    }
-  }, [step, merging, pair, onSolved])
-
   function tap(which) {
     if (step >= 2) return
     if (step === 0 && which === 'a') { pop(); setStep(1); return }
-    if (step === 1 && which === 'b') { pop(); setStep(2); return }
+    if (step === 1 && which === 'b') {
+      pop(); setStep(2)
+      // Second letter placed: fuse, speak the compound, then hand back.
+      setMerging(true)
+      chime()
+      setTimeout(() => { speak(pair.result, { voice: 'Seoyeon' }) }, 350)
+      setTimeout(() => { if (onSolved) onSolved() }, 1600)
+      return
+    }
     // wrong order — no error state, per brief; simply do nothing
   }
 

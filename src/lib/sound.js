@@ -443,7 +443,7 @@ export function chirp() {
   if (!enabled) return
   const a = ensure(); if (!a) return
   try {
-    const now = a.currentTime, dur = 0.32
+    const now = a.currentTime
     for (let i = 0; i < 2; i++) {
       const t = now + i * 0.14
       const g = a.createGain(); g.connect(a.destination)

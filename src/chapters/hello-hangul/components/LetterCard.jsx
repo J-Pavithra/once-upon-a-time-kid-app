@@ -1,6 +1,7 @@
 import { speak } from '../../../lib/tts.js'
 import { pop } from '../../../lib/sound.js'
-import MouthWindow, { mouthNoteFor } from './MouthWindow.jsx'
+import MouthWindow from './MouthWindow.jsx'
+import { mouthNoteFor } from './mouth-data.js'
 
 // Korean initial-consonant order (for Unicode syllable composition)
 const INITIALS = ['ㄱ','ㄲ','ㄴ','ㄷ','ㄸ','ㄹ','ㅁ','ㅂ','ㅃ','ㅅ','ㅆ','ㅇ','ㅈ','ㅉ','ㅊ','ㅋ','ㅌ','ㅍ','ㅎ']

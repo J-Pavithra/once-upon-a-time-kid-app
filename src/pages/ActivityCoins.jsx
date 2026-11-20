@@ -1,6 +1,6 @@
 import AppShell from '../components/AppShell.jsx'
 import PipSays from '../components/PipSays.jsx'
-import { useState, useMemo, useRef } from 'react'
+import { useState, useRef } from 'react'
 import confetti from '../lib/confetti.js'
 import { markDone } from '../lib/storage.js'
 import { coin, success, wrong as wrongSound } from '../lib/sound.js'
@@ -8,6 +8,14 @@ import { useChapter } from '../context/ChapterContext.jsx'
 
 function makeRound() {
   return 3 + Math.floor(Math.random() * 8) // 3..10
+}
+
+function makePositions(n) {
+  return Array.from({ length: n }).map(() => ({
+    x: 8 + Math.random() * 84,
+    y: 15 + Math.random() * 70,
+    r: -20 + Math.random() * 40,
+  }))
 }
 
 export default function ActivityCoins() {
@@ -20,13 +28,9 @@ export default function ActivityCoins() {
   const inputRef = useRef(null)
   const speech = "Count the coins! How many coins do you see? Type the number in the box."
 
-  const positions = useMemo(() => (
-    Array.from({ length: count }).map(() => ({
-      x: 8 + Math.random() * 84,
-      y: 15 + Math.random() * 70,
-      r: -20 + Math.random() * 40,
-    }))
-  ), [count, round])
+  // Generated once per round (in state, not during render) so re-renders
+  // never reshuffle the coins mid-game.
+  const [positions, setPositions] = useState(() => makePositions(count))
 
   function check() {
     const n = parseInt(answer, 10)
@@ -43,7 +47,9 @@ export default function ActivityCoins() {
   }
 
   function nextRound() {
-    setCount(makeRound())
+    const next = makeRound()
+    setCount(next)
+    setPositions(makePositions(next))
     setAnswer('')
     setFeedback(null)
     setTapped({})
