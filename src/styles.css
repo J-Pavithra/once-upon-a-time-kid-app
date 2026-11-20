@@ -358,6 +358,13 @@ input:focus { border-color: var(--terracotta); }
   .card, .certificate { box-shadow: none; border-color: #333; }
 }
 
+/* Lazy-chunk loading placeholder */
+.page-loading {
+  min-height: 60vh; display: flex; align-items: center; justify-content: center; gap: 10px;
+  font-family: var(--font-display); font-size: 1.2rem; color: var(--ink-soft);
+  animation: fm-fade-in 0.4s ease-out both; animation-delay: 0.15s;
+}
+
 /* ---------- Enter / loop animations (replaced framer-motion) ---------- */
 /* Elements re-mount on key change, so a mount animation replays per step. */
 @keyframes fm-fade-in   { from { opacity: 0 } to { opacity: 1 } }

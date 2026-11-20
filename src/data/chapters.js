@@ -1,47 +1,52 @@
-import Cover from '../pages/Cover.jsx'
-import Meet from '../pages/Meet.jsx'
-import StoryWheel from '../pages/StoryWheel.jsx'
-import StoryBread from '../pages/StoryBread.jsx'
-import StorySwap from '../pages/StorySwap.jsx'
-import StoryMoney from '../pages/StoryMoney.jsx'
-import StoryWriting from '../pages/StoryWriting.jsx'
-import StoryHomes from '../pages/StoryHomes.jsx'
-import StoryNeedWantIntro from '../pages/StoryNeedWantIntro.jsx'
-import StoryPiggy from '../pages/StoryPiggy.jsx'
-import StoryJobs from '../pages/StoryJobs.jsx'
-import StoryTravel from '../pages/StoryTravel.jsx'
-import StorySchool from '../pages/StorySchool.jsx'
-import ActivityCoins from '../pages/ActivityCoins.jsx'
-import ActivityMatch from '../pages/ActivityMatch.jsx'
-import ActivityNeedWant from '../pages/ActivityNeedWant.jsx'
-import ActivityMaze from '../pages/ActivityMaze.jsx'
-import Certificate from '../pages/Certificate.jsx'
+import { lazy } from 'react'
 
-import HelloFoodCover from '../chapters/hello-food/Cover.jsx'
-import Kitchen        from '../chapters/hello-food/Kitchen.jsx'
-import FoodRunner     from '../chapters/hello-food/FoodRunner.jsx'
+// Page components are code-split per file: a chapter's screens only download
+// when that chapter is opened. Data modules (units, foods, moments) stay eager
+// because the registry below needs their slugs to build the routes.
+const Cover = lazy(() => import('../pages/Cover.jsx'))
+const Meet = lazy(() => import('../pages/Meet.jsx'))
+const StoryWheel = lazy(() => import('../pages/StoryWheel.jsx'))
+const StoryBread = lazy(() => import('../pages/StoryBread.jsx'))
+const StorySwap = lazy(() => import('../pages/StorySwap.jsx'))
+const StoryMoney = lazy(() => import('../pages/StoryMoney.jsx'))
+const StoryWriting = lazy(() => import('../pages/StoryWriting.jsx'))
+const StoryHomes = lazy(() => import('../pages/StoryHomes.jsx'))
+const StoryNeedWantIntro = lazy(() => import('../pages/StoryNeedWantIntro.jsx'))
+const StoryPiggy = lazy(() => import('../pages/StoryPiggy.jsx'))
+const StoryJobs = lazy(() => import('../pages/StoryJobs.jsx'))
+const StoryTravel = lazy(() => import('../pages/StoryTravel.jsx'))
+const StorySchool = lazy(() => import('../pages/StorySchool.jsx'))
+const ActivityCoins = lazy(() => import('../pages/ActivityCoins.jsx'))
+const ActivityMatch = lazy(() => import('../pages/ActivityMatch.jsx'))
+const ActivityNeedWant = lazy(() => import('../pages/ActivityNeedWant.jsx'))
+const ActivityMaze = lazy(() => import('../pages/ActivityMaze.jsx'))
+const Certificate = lazy(() => import('../pages/Certificate.jsx'))
+
+const HelloFoodCover = lazy(() => import('../chapters/hello-food/Cover.jsx'))
+const Kitchen = lazy(() => import('../chapters/hello-food/Kitchen.jsx'))
+const FoodRunner = lazy(() => import('../chapters/hello-food/FoodRunner.jsx'))
 import { FOODS, foodActivityKey } from '../chapters/hello-food/foods.js'
 
-import HangulCover       from '../chapters/hello-hangul/Cover.jsx'
-import HangulUnitMap     from '../chapters/hello-hangul/UnitMap.jsx'
-import HangulUnitRunner  from '../chapters/hello-hangul/UnitRunner.jsx'
+const HangulCover = lazy(() => import('../chapters/hello-hangul/Cover.jsx'))
+const HangulUnitMap = lazy(() => import('../chapters/hello-hangul/UnitMap.jsx'))
+const HangulUnitRunner = lazy(() => import('../chapters/hello-hangul/UnitRunner.jsx'))
 import { UNITS as HANGUL_UNITS, ALL_ACTIVITY_KEYS as HANGUL_KEYS, unitActivityKey as hangulKey } from '../chapters/hello-hangul/units.js'
 
 // Say Something is clubbed under the Hangul chapter as Part 2 (`s-` prefix),
 // Yesterday, Today is Part 3 (`y-` prefix), Let's Make a Plan is Part 4
 // (`p-` prefix). One library card, four parts — the full Korean track.
-import SsUnitRunner      from '../chapters/say-something/UnitRunner.jsx'
+const SsUnitRunner = lazy(() => import('../chapters/say-something/UnitRunner.jsx'))
 import { UNITS as SS_UNITS, ALL_ACTIVITY_KEYS as SS_KEYS, unitActivityKey as ssKey } from '../chapters/say-something/units.js'
-import YtUnitRunner      from '../chapters/yesterday-today/UnitRunner.jsx'
+const YtUnitRunner = lazy(() => import('../chapters/yesterday-today/UnitRunner.jsx'))
 import { UNITS as YT_UNITS, ALL_ACTIVITY_KEYS as YT_KEYS, unitActivityKey as ytKey } from '../chapters/yesterday-today/units.js'
-import PlUnitRunner      from '../chapters/lets-make-a-plan/UnitRunner.jsx'
+const PlUnitRunner = lazy(() => import('../chapters/lets-make-a-plan/UnitRunner.jsx'))
 import { UNITS as PL_UNITS, ALL_ACTIVITY_KEYS as PL_KEYS, unitActivityKey as plKey } from '../chapters/lets-make-a-plan/units.js'
 
-import GkCover        from '../chapters/grandma-knows-why/Cover.jsx'
-import GkDayMap       from '../chapters/grandma-knows-why/DayMap.jsx'
-import GkMomentRunner from '../chapters/grandma-knows-why/MomentRunner.jsx'
-import GkBedtime      from '../chapters/grandma-knows-why/BedtimeRunner.jsx'
-import GkJar          from '../chapters/grandma-knows-why/ReasonJar.jsx'
+const GkCover = lazy(() => import('../chapters/grandma-knows-why/Cover.jsx'))
+const GkDayMap = lazy(() => import('../chapters/grandma-knows-why/DayMap.jsx'))
+const GkMomentRunner = lazy(() => import('../chapters/grandma-knows-why/MomentRunner.jsx'))
+const GkBedtime = lazy(() => import('../chapters/grandma-knows-why/BedtimeRunner.jsx'))
+const GkJar = lazy(() => import('../chapters/grandma-knows-why/ReasonJar.jsx'))
 import { MOMENTS, BEDTIME_MOMENT, ALL_ACTIVITY_KEYS as GK_KEYS, momentActivityKey } from '../chapters/grandma-knows-why/moments.js'
 
 /**
