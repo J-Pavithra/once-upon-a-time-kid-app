@@ -56,8 +56,8 @@ Pages.
   Spoken Content → Voices → add Korean. Windows: Settings → Time & Language →
   Language → add Korean with the speech pack. Without one, the Hangul chapter
   shows a one-time hint and Yuna stays quiet or is read by a non-Korean voice.
-- **Fonts load from Google Fonts.** That is the only network request the app
-  makes.
+- **Nothing is fetched from the network.** Fonts are bundled with the app via
+  @fontsource, so the site makes no third-party requests at all.
 
 ## Folder layout
 
