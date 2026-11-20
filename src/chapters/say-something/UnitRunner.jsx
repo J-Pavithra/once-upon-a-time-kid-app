@@ -71,7 +71,7 @@ function VerbTableStage({ unit }) {
         {unit.verbs.map((v, i) => (
           <Fragment key={i}>
             <div style={{ padding: '8px 6px', borderTop: '2px dashed #F4E9D3' }}>
-              <div className="hh-han-inline" style={{ fontSize: 20 }}>{v.dict}</div>
+              <div className="hh-han-inline" lang="ko" style={{ fontSize: 20 }}>{v.dict}</div>
               <div className="hh-roman">{v.dictRoman}</div>
             </div>
             <button
@@ -84,7 +84,7 @@ function VerbTableStage({ unit }) {
                 boxShadow: 'none', transform: 'none',
               }}
             >
-              <div className="hh-han-inline" style={{ fontSize: 20, fontWeight: 700 }}>{v.polite}</div>
+              <div className="hh-han-inline" lang="ko" style={{ fontSize: 20, fontWeight: 700 }}>{v.polite}</div>
               <div className="hh-roman">{v.politeRoman}</div>
               <div style={{ fontSize: 11, color: 'var(--hh-ink-soft)', marginTop: 2 }}>
                 {heard.has(v.dict) ? '✓ heard' : '▶ tap'}
@@ -154,7 +154,7 @@ function StoryStage({ unit, onFinished }) {
       <button className="hh-card" onClick={() => { pop(); speak(s.yuna.line, { voice: 'Seoyeon' }) }}
         style={{ ...CARD_BUTTON_RESET, textAlign: 'left', width: '100%', cursor: 'pointer' }}>
         <div className="hh-eyebrow">YUNA</div>
-        <div className="hh-han-inline" style={{ fontSize: 22, marginTop: 4 }}>{s.yuna.line}</div>
+        <div className="hh-han-inline" lang="ko" style={{ fontSize: 22, marginTop: 4 }}>{s.yuna.line}</div>
         <div className="hh-roman">{s.yuna.roman}</div>
         <div style={{ marginTop: 4, fontFamily: 'var(--hh-font-body)', fontSize: 14, color: 'var(--hh-ink-soft)' }}>
           {s.yuna.meaning}
@@ -183,7 +183,7 @@ function StoryStage({ unit, onFinished }) {
                 boxShadow: 'none', transform: 'none',
               }}
             >
-              <div className="hh-han-inline" style={{ fontSize: 20 }}>{opt.line}</div>
+              <div className="hh-han-inline" lang="ko" style={{ fontSize: 20 }}>{opt.line}</div>
               <div className="hh-roman">{opt.roman}</div>
               <div style={{ marginTop: 4, fontFamily: 'var(--hh-font-body)', fontSize: 14 }}>
                 {opt.meaning}
@@ -276,7 +276,7 @@ export default function UnitRunner() {
           <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
             <div className="hh-eyebrow">{unit.part}</div>
             <h1 className="hh-title" style={{ margin: 0 }}>{unit.title}</h1>
-            <div className="hh-han-inline" style={{ fontSize: 26 }}>{unit.grammar}</div>
+            <div className="hh-han-inline" lang="ko" style={{ fontSize: 26 }}>{unit.grammar}</div>
             <div className="hh-card tinted-sun">
               <div style={{ fontFamily: 'var(--hh-font-body)', fontSize: 16, lineHeight: 1.55 }}>
                 {unit.intro}

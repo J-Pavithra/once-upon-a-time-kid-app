@@ -35,7 +35,7 @@ export default function YunasPostcard(props) {
         <div style={{ position: 'relative' }}>
           <div style={{ fontSize: 32, lineHeight: 1, marginBottom: 4 }}>{scene}</div>
           <div className={`hh-paper ${flying ? 'fly' : ''}`} style={{ display: 'inline-block' }}>
-            <div className="hh-han-word" style={{ fontSize: 30, lineHeight: 1.2 }}>{line}</div>
+            <div className="hh-han-word" lang="ko" style={{ fontSize: 30, lineHeight: 1.2 }}>{line}</div>
           </div>
           {romanisation && <div className="hh-roman" style={{ marginTop: 2 }}>{romanisation}</div>}
           <div style={{ fontFamily: 'var(--hh-font-body)', fontWeight: 500, fontSize: 16, color: 'var(--hh-ink-soft)', marginTop: 4 }}>

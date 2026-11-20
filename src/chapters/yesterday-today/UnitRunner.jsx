@@ -53,11 +53,11 @@ function PastVerbsStage({ unit }) {
         {unit.verbs.map((v, i) => (
           <Fragment key={i}>
             <div style={{ padding: '8px 6px', borderTop: '2px dashed #F4E9D3' }}>
-              <div className="hh-han-inline" style={{ fontSize: 20 }}>{v.dict}</div>
+              <div className="hh-han-inline" lang="ko" style={{ fontSize: 20 }}>{v.dict}</div>
               <div className="hh-roman">{v.dictRoman}</div>
             </div>
             <div style={{ padding: '8px 6px', borderTop: '2px dashed #F4E9D3' }}>
-              <div className="hh-han-inline" style={{ fontSize: 20 }}>{v.present}</div>
+              <div className="hh-han-inline" lang="ko" style={{ fontSize: 20 }}>{v.present}</div>
               <div className="hh-roman">{v.presentRoman}</div>
             </div>
             <button
@@ -69,7 +69,7 @@ function PastVerbsStage({ unit }) {
                 border: 'none', borderTop: '2px dashed #F4E9D3', cursor: 'pointer',
               }}
             >
-              <div className="hh-han-inline" style={{ fontSize: 20, fontWeight: 700 }}>{v.past}</div>
+              <div className="hh-han-inline" lang="ko" style={{ fontSize: 20, fontWeight: 700 }}>{v.past}</div>
               <div className="hh-roman">{v.pastRoman}</div>
               <div style={{ fontSize: 11, color: 'var(--hh-ink-soft)', marginTop: 2 }}>
                 {heard.has(v.dict) ? '✓ heard' : '▶ tap'}
@@ -123,7 +123,7 @@ function ConvertStage({ unit }) {
       </div>
       <div className="hh-card">
         <div className="hh-eyebrow">PRESENT</div>
-        <div className="hh-han-inline" style={{ fontSize: 22, marginTop: 4 }}>{p.present}</div>
+        <div className="hh-han-inline" lang="ko" style={{ fontSize: 22, marginTop: 4 }}>{p.present}</div>
       </div>
       <div className="hh-card tinted-plum">
         <div className="hh-eyebrow">SAY IT IN THE PAST</div>
@@ -150,7 +150,7 @@ function ConvertStage({ unit }) {
                 textAlign: 'center',
               }}
             >
-              <div className="hh-han-inline" style={{ fontSize: 20 }}>{c.form}</div>
+              <div className="hh-han-inline" lang="ko" style={{ fontSize: 20 }}>{c.form}</div>
               <div className="hh-roman" style={{ fontSize: 12, marginTop: 2 }}>{c.roman}</div>
             </button>
           )
@@ -158,7 +158,7 @@ function ConvertStage({ unit }) {
       </div>
       {correct && (
         <div className="hh-card tinted-mint hh-fade">
-          <div className="hh-han-inline" style={{ fontSize: 18 }}>{p.past}</div>
+          <div className="hh-han-inline" lang="ko" style={{ fontSize: 18 }}>{p.past}</div>
           <div className="hh-roman">{p.roman}</div>
         </div>
       )}
@@ -193,7 +193,7 @@ function DateStage({ unit }) {
               <span style={{ fontSize: 12, fontWeight: 700, color: 'var(--hh-ink-soft)' }}>{m.n}월</span>
               {m.irregular && <span style={{ fontSize: 10, fontWeight: 700, color: '#E8763A', marginLeft: 'auto' }}>★</span>}
             </div>
-            <div className="hh-han-inline" style={{ fontSize: 20, fontWeight: 700 }}>{m.word}</div>
+            <div className="hh-han-inline" lang="ko" style={{ fontSize: 20, fontWeight: 700 }}>{m.word}</div>
             <div className="hh-roman">{m.roman}</div>
             <div style={{ fontSize: 12, marginTop: 2, fontWeight: 500 }}>{m.meaning}</div>
           </button>
@@ -251,7 +251,7 @@ function ClockStage({ unit }) {
               }}
             >
               <div style={{ fontSize: 11, opacity: 0.7 }}>{hr.n}</div>
-              <div className="hh-han-inline" style={{ fontSize: 15, fontWeight: 700 }}>{hr.word}</div>
+              <div className="hh-han-inline" lang="ko" style={{ fontSize: 15, fontWeight: 700 }}>{hr.word}</div>
               <div className="hh-roman" style={{ fontSize: 10, marginTop: 1 }}>{hr.roman}</div>
             </button>
           ))}
@@ -273,7 +273,7 @@ function ClockStage({ unit }) {
               }}
             >
               <div style={{ fontSize: 11, opacity: 0.7 }}>{mn.m}</div>
-              <div className="hh-han-inline" style={{ fontSize: 15, fontWeight: 700 }}>{mn.word.replace(' 분','')}</div>
+              <div className="hh-han-inline" lang="ko" style={{ fontSize: 15, fontWeight: 700 }}>{mn.word.replace(' 분','')}</div>
               <div className="hh-roman" style={{ fontSize: 10, marginTop: 1 }}>{mn.roman.replace(' bun','')}</div>
             </button>
           ))}
@@ -281,7 +281,7 @@ function ClockStage({ unit }) {
       </div>
       <div className="hh-card tinted-mint" onClick={hear} style={{ cursor: 'pointer' }}>
         <div className="hh-eyebrow">YOUR TIME · tap to hear</div>
-        <div className="hh-han-inline" style={{ fontSize: 26, marginTop: 4 }}>{line}</div>
+        <div className="hh-han-inline" lang="ko" style={{ fontSize: 26, marginTop: 4 }}>{line}</div>
         <div className="hh-roman">{roman}</div>
       </div>
     </div>
@@ -307,13 +307,13 @@ function CountersStage({ unit }) {
               minWidth: 60, textAlign: 'center', background: '#FFF3C4',
               border: '3px solid var(--hh-ink)', borderRadius: 12, padding: 8,
             }}>
-              <div className="hh-han-inline" style={{ fontSize: 28, fontWeight: 700 }}>{c.counter}</div>
+              <div className="hh-han-inline" lang="ko" style={{ fontSize: 28, fontWeight: 700 }}>{c.counter}</div>
             </div>
             <div style={{ flex: 1 }}>
               <div style={{ fontSize: 12, fontWeight: 700, letterSpacing: 1, color: 'var(--hh-ink-soft)' }}>
                 FOR {c.for.toUpperCase()}
               </div>
-              <div className="hh-han-inline" style={{ fontSize: 22, marginTop: 2 }}>{c.example}</div>
+              <div className="hh-han-inline" lang="ko" style={{ fontSize: 22, marginTop: 2 }}>{c.example}</div>
               <div className="hh-roman">{c.exampleRoman}</div>
               <div style={{ fontFamily: 'var(--hh-font-body)', fontSize: 14, marginTop: 2 }}>{c.exampleMeaning}</div>
             </div>
@@ -356,11 +356,11 @@ function VocabExamplesStage({ unit }) {
             style={{ ...CARD_BUTTON_RESET, textAlign: 'left', width: '100%', cursor: 'pointer' }}
           >
             <div style={{ display: 'flex', alignItems: 'baseline', gap: 6 }}>
-              <span className="hh-han-inline" style={{ fontSize: 22, fontWeight: 700, color: 'var(--hh-terra)' }}>{w.word}</span>
+              <span className="hh-han-inline" lang="ko" style={{ fontSize: 22, fontWeight: 700, color: 'var(--hh-terra)' }}>{w.word}</span>
               <span style={{ fontFamily: 'var(--hh-font-body)', fontSize: 12, fontWeight: 700, color: 'var(--hh-ink-soft)' }}>= {w.meaning}</span>
               <span style={{ marginLeft: 'auto', fontSize: 18 }}>{w.scene}</span>
             </div>
-            <div className="hh-han-inline" style={{ fontSize: 17, marginTop: 4 }}>{w.example}</div>
+            <div className="hh-han-inline" lang="ko" style={{ fontSize: 17, marginTop: 4 }}>{w.example}</div>
             <div style={{ fontFamily: 'var(--hh-font-body)', fontSize: 13, marginTop: 2 }}>{w.exampleMeaning}</div>
           </button>
         ))}
@@ -409,7 +409,7 @@ function DiaryStage({ unit, onFinished }) {
         </div>
       </div>
       <div className="hh-card" style={{ background: '#FFFDF5' }}>
-        <div className="hh-han-inline" style={{ fontSize: 24, lineHeight: 1.4 }}>
+        <div className="hh-han-inline" lang="ko" style={{ fontSize: 24, lineHeight: 1.4 }}>
           {e.prefix}{' '}
           <span style={{
             display: 'inline-block', minWidth: 90, padding: '2px 8px',
@@ -445,7 +445,7 @@ function DiaryStage({ unit, onFinished }) {
                 opacity: !picked || chosen ? 1 : 0.5,
               }}
             >
-              <div className="hh-han-inline" style={{ fontSize: 18 }}>{opt}</div>
+              <div className="hh-han-inline" lang="ko" style={{ fontSize: 18 }}>{opt}</div>
               {DIARY_ROMAN[opt] && (
                 <div className="hh-roman" style={{ fontSize: 12, marginTop: 2, textAlign: 'center' }}>
                   {DIARY_ROMAN[opt]}
@@ -531,7 +531,7 @@ export default function UnitRunner() {
           <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
             <div className="hh-eyebrow">{unit.part}</div>
             <h1 className="hh-title" style={{ margin: 0 }}>{unit.title}</h1>
-            <div className="hh-han-inline" style={{ fontSize: 26 }}>{unit.grammar}</div>
+            <div className="hh-han-inline" lang="ko" style={{ fontSize: 26 }}>{unit.grammar}</div>
             <div className="hh-card tinted-sun">
               <div style={{ fontFamily: 'var(--hh-font-body)', fontSize: 16, lineHeight: 1.55 }}>
                 {unit.intro}

@@ -88,7 +88,7 @@ export default function BlockBuilder({
 
       {solved && (
         <div className="hh-fade" style={{ textAlign: 'center' }}>
-          <div className="hh-han-word">{koreanWord}</div>
+          <div className="hh-han-word" lang="ko">{koreanWord}</div>
           {romanisation && <div className="hh-roman">{romanisation}</div>}
           <div style={{ fontFamily: 'var(--hh-font-body)', fontWeight: 700, fontSize: 22, marginTop: 4 }}>{meaning}</div>
         </div>

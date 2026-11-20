@@ -44,7 +44,7 @@ export default function UnitMap() {
           display: 'flex', alignItems: 'baseline', gap: 10, marginTop: 4,
           borderBottom: '3px solid var(--hh-ink)', paddingBottom: 4,
         }}>
-          <div className="hh-han-fun" style={{ fontSize: 32, color: 'var(--hh-terra)' }}>한글</div>
+          <div className="hh-han-fun" lang="ko" style={{ fontSize: 32, color: 'var(--hh-terra)' }}>한글</div>
           <h1 className="hh-title" style={{ margin: 0 }}>Part 1 · The alphabet</h1>
         </div>
         <div style={{ fontFamily: 'var(--hh-font-body)', color: 'var(--hh-ink-soft)' }}>
@@ -64,17 +64,17 @@ export default function UnitMap() {
                 <div className="part">{u.part.split('·')[1]?.trim() || u.part}</div>
                 <div className="name">{u.title}</div>
                 {u.letters?.length && (
-                  <div className="han" style={{ marginTop: 4 }}>
+                  <div className="han" lang="ko" style={{ marginTop: 4 }}>
                     {u.letters.slice(0, 5).map(l => l.letter).join(' ')}
                   </div>
                 )}
                 {u.words?.length && (
-                  <div className="han" style={{ marginTop: 4 }}>
+                  <div className="han" lang="ko" style={{ marginTop: 4 }}>
                     {u.words.slice(0, 3).map(w => w.word).join(' · ')}
                   </div>
                 )}
                 {u.phrases?.length && (
-                  <div className="han" style={{ marginTop: 4, fontSize: 18 }}>
+                  <div className="han" lang="ko" style={{ marginTop: 4, fontSize: 18 }}>
                     {u.phrases[0].line}
                   </div>
                 )}
@@ -88,7 +88,7 @@ export default function UnitMap() {
           display: 'flex', alignItems: 'baseline', gap: 10, marginTop: 24,
           borderBottom: '3px solid var(--hh-ink)', paddingBottom: 4,
         }}>
-          <div className="hh-han-fun" style={{ fontSize: 32, color: 'var(--hh-terra)' }}>말해요</div>
+          <div className="hh-han-fun" lang="ko" style={{ fontSize: 32, color: 'var(--hh-terra)' }}>말해요</div>
           <h1 className="hh-title" style={{ margin: 0 }}>Part 2 · Say Something</h1>
         </div>
         <div style={{ fontFamily: 'var(--hh-font-body)', color: 'var(--hh-ink-soft)' }}>
@@ -107,7 +107,7 @@ export default function UnitMap() {
                 </div>
                 <div className="part">{u.part.split('·')[1]?.trim() || u.part}</div>
                 <div className="name">{u.title}</div>
-                <div className="han" style={{ marginTop: 4, fontSize: 20 }}>{u.grammar}</div>
+                <div className="han" lang="ko" style={{ marginTop: 4, fontSize: 20 }}>{u.grammar}</div>
               </button>
             )
           })}
@@ -118,7 +118,7 @@ export default function UnitMap() {
           display: 'flex', alignItems: 'baseline', gap: 10, marginTop: 24,
           borderBottom: '3px solid var(--hh-ink)', paddingBottom: 4,
         }}>
-          <div className="hh-han-fun" style={{ fontSize: 32, color: 'var(--hh-terra)' }}>어제</div>
+          <div className="hh-han-fun" lang="ko" style={{ fontSize: 32, color: 'var(--hh-terra)' }}>어제</div>
           <h1 className="hh-title" style={{ margin: 0 }}>Part 3 · Yesterday, Today</h1>
         </div>
         <div style={{ fontFamily: 'var(--hh-font-body)', color: 'var(--hh-ink-soft)' }}>
@@ -137,7 +137,7 @@ export default function UnitMap() {
                 </div>
                 <div className="part">{u.part.split('·')[1]?.trim() || u.part}</div>
                 <div className="name">{u.title}</div>
-                <div className="han" style={{ marginTop: 4, fontSize: 20 }}>{u.grammar}</div>
+                <div className="han" lang="ko" style={{ marginTop: 4, fontSize: 20 }}>{u.grammar}</div>
               </button>
             )
           })}
@@ -148,7 +148,7 @@ export default function UnitMap() {
           display: 'flex', alignItems: 'baseline', gap: 10, marginTop: 24,
           borderBottom: '3px solid var(--hh-ink)', paddingBottom: 4,
         }}>
-          <div className="hh-han-fun" style={{ fontSize: 32, color: 'var(--hh-terra)' }}>계획</div>
+          <div className="hh-han-fun" lang="ko" style={{ fontSize: 32, color: 'var(--hh-terra)' }}>계획</div>
           <h1 className="hh-title" style={{ margin: 0 }}>Part 4 · Let's Make a Plan</h1>
         </div>
         <div style={{ fontFamily: 'var(--hh-font-body)', color: 'var(--hh-ink-soft)' }}>
@@ -167,7 +167,7 @@ export default function UnitMap() {
                 </div>
                 <div className="part">{u.part.split('·')[1]?.trim() || u.part}</div>
                 <div className="name">{u.title}</div>
-                <div className="han" style={{ marginTop: 4, fontSize: 20 }}>{u.grammar}</div>
+                <div className="han" lang="ko" style={{ marginTop: 4, fontSize: 20 }}>{u.grammar}</div>
               </button>
             )
           })}
@@ -192,7 +192,7 @@ export default function UnitMap() {
                   onClick={(e) => { e.stopPropagation(); speak(w.word, { voice: 'Seoyeon' }) }}
                   title={w.meaning}
                 >
-                  <span className="hh-han-inline">{w.word}</span>
+                  <span className="hh-han-inline" lang="ko">{w.word}</span>
                   <span className="hh-roman" style={{ marginLeft: 6 }}>{w.roman}</span>
                   <span style={{ marginLeft: 6, color: 'var(--hh-ink-soft)' }}>· {w.meaning}</span>
                 </button>

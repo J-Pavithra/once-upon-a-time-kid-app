@@ -36,7 +36,7 @@ export default function LetterCard({ letter, sound, hint }) {
         border: '4px solid var(--hh-ink)', borderRadius: 22, background: 'white',
         padding: 12, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 6,
       }}>
-        <div className="hh-han-big">{letter}</div>
+        <div className="hh-han-big" lang="ko">{letter}</div>
         {sound && <div className="hh-roman" style={{ fontSize: 20 }}>≈ {sound}</div>}
       </div>
       <div style={{

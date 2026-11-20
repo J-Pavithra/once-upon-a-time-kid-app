@@ -44,7 +44,7 @@ export default function Cover() {
 
         <div className="hh-card tinted-blush" style={{ padding: 22, textAlign: 'center' }}>
           <div className="hh-eyebrow">CHAPTER 7 · WITH YUNA IN SEOUL</div>
-          <div className="hh-han-fun" style={{ fontFamily: 'var(--hh-font-han-fun)', fontSize: 'clamp(3rem, 12vw, 5rem)', color: 'var(--hh-terra)', margin: '8px 0 4px' }}>
+          <div className="hh-han-fun" lang="ko" style={{ fontFamily: 'var(--hh-font-han-fun)', fontSize: 'clamp(3rem, 12vw, 5rem)', color: 'var(--hh-terra)', margin: '8px 0 4px' }}>
             한글
           </div>
           <h1 className="hh-title" style={{ margin: '4px 0 8px' }}>Hello, Hangul!</h1>
@@ -82,7 +82,7 @@ export default function Cover() {
           }}>
             <div style={{ background: 'white', border: '3px solid var(--hh-ink)', borderRadius: 14, padding: 10 }}>
               <div style={{ display: 'flex', gap: 4, alignItems: 'baseline', flexWrap: 'wrap' }}>
-                <div className="hh-han-fun" style={{ fontSize: 22, color: 'var(--hh-terra)' }}>한글</div>
+                <div className="hh-han-fun" lang="ko" style={{ fontSize: 22, color: 'var(--hh-terra)' }}>한글</div>
                 <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: 1, color: 'var(--hh-ink-soft)' }}>PART 1 · 19</div>
               </div>
               <div style={{ fontSize: 14, fontWeight: 600, marginTop: 4 }}>The alphabet</div>
@@ -92,7 +92,7 @@ export default function Cover() {
             </div>
             <div style={{ background: 'white', border: '3px solid var(--hh-ink)', borderRadius: 14, padding: 10 }}>
               <div style={{ display: 'flex', gap: 4, alignItems: 'baseline', flexWrap: 'wrap' }}>
-                <div className="hh-han-fun" style={{ fontSize: 22, color: 'var(--hh-terra)' }}>말해요</div>
+                <div className="hh-han-fun" lang="ko" style={{ fontSize: 22, color: 'var(--hh-terra)' }}>말해요</div>
                 <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: 1, color: 'var(--hh-ink-soft)' }}>PART 2 · 12</div>
               </div>
               <div style={{ fontSize: 14, fontWeight: 600, marginTop: 4 }}>Say Something</div>
@@ -102,7 +102,7 @@ export default function Cover() {
             </div>
             <div style={{ background: 'white', border: '3px solid var(--hh-ink)', borderRadius: 14, padding: 10 }}>
               <div style={{ display: 'flex', gap: 4, alignItems: 'baseline', flexWrap: 'wrap' }}>
-                <div className="hh-han-fun" style={{ fontSize: 22, color: 'var(--hh-terra)' }}>어제</div>
+                <div className="hh-han-fun" lang="ko" style={{ fontSize: 22, color: 'var(--hh-terra)' }}>어제</div>
                 <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: 1, color: 'var(--hh-ink-soft)' }}>PART 3 · 12</div>
               </div>
               <div style={{ fontSize: 14, fontWeight: 600, marginTop: 4 }}>Yesterday, Today</div>
@@ -112,7 +112,7 @@ export default function Cover() {
             </div>
             <div style={{ background: 'white', border: '3px solid var(--hh-ink)', borderRadius: 14, padding: 10 }}>
               <div style={{ display: 'flex', gap: 4, alignItems: 'baseline', flexWrap: 'wrap' }}>
-                <div className="hh-han-fun" style={{ fontSize: 22, color: 'var(--hh-terra)' }}>계획</div>
+                <div className="hh-han-fun" lang="ko" style={{ fontSize: 22, color: 'var(--hh-terra)' }}>계획</div>
                 <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: 1, color: 'var(--hh-ink-soft)' }}>PART 4 · 12</div>
               </div>
               <div style={{ fontSize: 14, fontWeight: 600, marginTop: 4 }}>Let's Make a Plan</div>

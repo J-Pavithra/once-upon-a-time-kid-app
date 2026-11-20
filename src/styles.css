@@ -105,6 +105,8 @@ body[data-theme="space"] .certificate { color: var(--ink); }
 }
 
 @media (prefers-reduced-motion: reduce) {
+  /* Enter/loop animations (fm-*) jump straight to their end state. */
+  [class^="fm-"], [class*=" fm-"] { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; animation-delay: 0s !important; }
   .bg-particle, .bg-moon { animation: none !important; opacity: 0.35; }
 }
 

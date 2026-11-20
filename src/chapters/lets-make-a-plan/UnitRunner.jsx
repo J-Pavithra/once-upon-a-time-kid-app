@@ -38,7 +38,7 @@ function AdjTableStage({ unit }) {
         {unit.adjs.map((a, i) => (
           <Fragment key={i}>
             <div style={{ padding: '8px 6px', borderTop: '2px dashed #F4E9D3' }}>
-              <div className="hh-han-inline" style={{ fontSize: 20 }}>{a.dict}</div>
+              <div className="hh-han-inline" lang="ko" style={{ fontSize: 20 }}>{a.dict}</div>
               <div className="hh-roman">{a.dictRoman}</div>
             </div>
             <button
@@ -50,7 +50,7 @@ function AdjTableStage({ unit }) {
                 border: 'none', borderTop: '2px dashed #F4E9D3', cursor: 'pointer',
               }}
             >
-              <div className="hh-han-inline" style={{ fontSize: 20, fontWeight: 700 }}>{a.polite}</div>
+              <div className="hh-han-inline" lang="ko" style={{ fontSize: 20, fontWeight: 700 }}>{a.polite}</div>
               <div className="hh-roman">{a.politeRoman}</div>
               <div style={{ fontSize: 11, color: 'var(--hh-ink-soft)', marginTop: 2 }}>
                 {heard.has(a.dict) ? '✓ heard' : '▶ tap'}
@@ -98,10 +98,10 @@ function NounModifierStage({ unit }) {
             <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: 1, color: 'var(--hh-ink-soft)', padding: '2px 8px', border: '2px solid var(--hh-ink)', borderRadius: 999, background: 'white' }}>
               {KIND_LABEL[p.kind]}
             </span>
-            <span className="hh-han-inline" style={{ fontSize: 18, color: 'var(--hh-ink-soft)' }}>{p.adj}</span>
+            <span className="hh-han-inline" lang="ko" style={{ fontSize: 18, color: 'var(--hh-ink-soft)' }}>{p.adj}</span>
             <span style={{ fontFamily: 'var(--hh-font-body)', fontWeight: 700, color: 'var(--hh-ink-soft)' }}>→</span>
-            <span className="hh-han-inline" style={{ fontSize: 24, fontWeight: 700, color: 'var(--hh-terra)' }}>{p.mod}</span>
-            <span className="hh-han-inline" style={{ fontSize: 22 }}>{p.noun}</span>
+            <span className="hh-han-inline" lang="ko" style={{ fontSize: 24, fontWeight: 700, color: 'var(--hh-terra)' }}>{p.mod}</span>
+            <span className="hh-han-inline" lang="ko" style={{ fontSize: 22 }}>{p.noun}</span>
           </div>
           <div style={{ marginTop: 6, fontFamily: 'var(--hh-font-body)', fontSize: 15, fontWeight: 500 }}>
             {p.meaning}
@@ -176,9 +176,9 @@ function VerbFormStage({ unit }) {
               <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: 1, color: 'var(--hh-ink-soft)', padding: '2px 8px', border: '2px solid var(--hh-ink)', borderRadius: 999, background: 'white' }}>
                 {KIND_LABEL[v.stemKind]}
               </span>
-              <span className="hh-han-inline" style={{ fontSize: 20, color: 'var(--hh-ink-soft)' }}>{v.dict}</span>
+              <span className="hh-han-inline" lang="ko" style={{ fontSize: 20, color: 'var(--hh-ink-soft)' }}>{v.dict}</span>
               <span style={{ fontFamily: 'var(--hh-font-body)', fontWeight: 700, color: 'var(--hh-ink-soft)' }}>→</span>
-              <span className="hh-han-inline" style={{ fontSize: 26, fontWeight: 700, color: 'var(--hh-terra)' }}>{v.form}</span>
+              <span className="hh-han-inline" lang="ko" style={{ fontSize: 26, fontWeight: 700, color: 'var(--hh-terra)' }}>{v.form}</span>
               <span style={{ fontFamily: 'var(--hh-font-body)', fontSize: 14, fontWeight: 500, marginLeft: 'auto' }}>
                 {v.meaning}
               </span>
@@ -207,7 +207,7 @@ function VocabExamplesStage({ unit }) {
             style={{ ...CARD_BUTTON_RESET, textAlign: 'left', width: '100%', cursor: 'pointer' }}
           >
             <div style={{ display: 'flex', alignItems: 'baseline', gap: 6 }}>
-              <span className="hh-han-inline" style={{ fontSize: 22, fontWeight: 700, color: 'var(--hh-terra)' }}>{w.word}</span>
+              <span className="hh-han-inline" lang="ko" style={{ fontSize: 22, fontWeight: 700, color: 'var(--hh-terra)' }}>{w.word}</span>
               <span style={{ marginLeft: 'auto', fontSize: 22 }}>{w.scene}</span>
             </div>
             <div className="hh-roman">{w.roman}</div>
@@ -215,7 +215,7 @@ function VocabExamplesStage({ unit }) {
               {w.meaning}
             </div>
             <div style={{ marginTop: 6, borderTop: '2px dashed #F4E9D3', paddingTop: 6 }}>
-              <div className="hh-han-inline" style={{ fontSize: 18 }}>{w.example}</div>
+              <div className="hh-han-inline" lang="ko" style={{ fontSize: 18 }}>{w.example}</div>
               <div style={{ fontFamily: 'var(--hh-font-body)', fontSize: 13, marginTop: 2 }}>{w.exampleMeaning}</div>
             </div>
           </button>
@@ -256,7 +256,7 @@ function CasualStage({ unit }) {
                 borderTop: '2px dashed #F4E9D3', cursor: 'pointer', background: 'transparent',
               }}
             >
-              <div className="hh-han-inline" style={{ fontSize: 18 }}>{p.casual}</div>
+              <div className="hh-han-inline" lang="ko" style={{ fontSize: 18 }}>{p.casual}</div>
               <div className="hh-roman">{p.casualRoman}</div>
               <div style={{ fontSize: 11, color: '#A63A2E', marginTop: 2 }}>▶ hear</div>
             </button>
@@ -268,7 +268,7 @@ function CasualStage({ unit }) {
                 borderTop: '2px dashed #F4E9D3', cursor: 'pointer', background: 'transparent',
               }}
             >
-              <div className="hh-han-inline" style={{ fontSize: 18, fontWeight: 700 }}>{p.polite}</div>
+              <div className="hh-han-inline" lang="ko" style={{ fontSize: 18, fontWeight: 700 }}>{p.polite}</div>
               <div className="hh-roman">{p.politeRoman}</div>
               <div style={{ fontSize: 11, color: 'var(--hh-ink-soft)', marginTop: 2 }}>▶ hear</div>
             </button>
@@ -316,7 +316,7 @@ function StoryStage({ unit, onFinished }) {
       <button className="hh-card" onClick={() => { pop(); speak(s.yuna.line, { voice: 'Seoyeon' }) }}
         style={{ ...CARD_BUTTON_RESET, textAlign: 'left', width: '100%', cursor: 'pointer' }}>
         <div className="hh-eyebrow">YUNA</div>
-        <div className="hh-han-inline" style={{ fontSize: 22, marginTop: 4 }}>{s.yuna.line}</div>
+        <div className="hh-han-inline" lang="ko" style={{ fontSize: 22, marginTop: 4 }}>{s.yuna.line}</div>
         <div className="hh-roman">{s.yuna.roman}</div>
         <div style={{ marginTop: 4, fontFamily: 'var(--hh-font-body)', fontSize: 14, color: 'var(--hh-ink-soft)' }}>
           {s.yuna.meaning}
@@ -353,7 +353,7 @@ function StoryStage({ unit, onFinished }) {
                   {opt.tone.toUpperCase()}
                 </div>
               )}
-              <div className="hh-han-inline" style={{ fontSize: 20 }}>{opt.line}</div>
+              <div className="hh-han-inline" lang="ko" style={{ fontSize: 20 }}>{opt.line}</div>
               <div className="hh-roman">{opt.roman}</div>
               <div style={{ marginTop: 4, fontFamily: 'var(--hh-font-body)', fontSize: 14 }}>
                 {opt.meaning}
@@ -448,7 +448,7 @@ export default function UnitRunner() {
           <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
             <div className="hh-eyebrow">{unit.part}</div>
             <h1 className="hh-title" style={{ margin: 0 }}>{unit.title}</h1>
-            <div className="hh-han-inline" style={{ fontSize: 26 }}>{unit.grammar}</div>
+            <div className="hh-han-inline" lang="ko" style={{ fontSize: 26 }}>{unit.grammar}</div>
             <div className="hh-card tinted-sun">
               <div style={{ fontFamily: 'var(--hh-font-body)', fontSize: 16, lineHeight: 1.55 }}>
                 {unit.intro}

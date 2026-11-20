@@ -39,7 +39,7 @@ export default function VowelMerge({ pair, onSolved }) {
         }}
         disabled={step >= 2}
       >
-        <div className="glyph">{pair.a}</div>
+        <div className="glyph" lang="ko">{pair.a}</div>
       </button>
 
       <span className="op">+</span>
@@ -53,7 +53,7 @@ export default function VowelMerge({ pair, onSolved }) {
         }}
         disabled={step >= 2}
       >
-        <div className="glyph">{pair.b}</div>
+        <div className="glyph" lang="ko">{pair.b}</div>
       </button>
 
       <span className="op">=</span>
@@ -61,12 +61,12 @@ export default function VowelMerge({ pair, onSolved }) {
       <div className={`result ${merging ? 'merging' : ''}`}>
         {step >= 2 ? (
           <>
-            <div className="glyph" style={{ fontSize: 60 }}>{pair.result}</div>
+            <div className="glyph" lang="ko" style={{ fontSize: 60 }}>{pair.result}</div>
             <div className="hh-roman">{pair.roman}</div>
           </>
         ) : (
           <>
-            <div className="glyph" style={{ opacity: 0.25 }}>?</div>
+            <div className="glyph" lang="ko" style={{ opacity: 0.25 }}>?</div>
             <div className="hh-roman" style={{ opacity: 0.35 }}>{pair.roman}</div>
           </>
         )}

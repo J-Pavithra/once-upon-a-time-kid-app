@@ -24,7 +24,7 @@ export function RuleCard({ rule }) {
         {rule.head}
       </div>
       {rule.body && (
-        <div className="hh-han-inline" style={{ marginTop: 4, fontSize: 18, whiteSpace: 'pre-line' }}>
+        <div className="hh-han-inline" lang="ko" style={{ marginTop: 4, fontSize: 18, whiteSpace: 'pre-line' }}>
           {rule.body}
         </div>
       )}
@@ -50,7 +50,7 @@ export function PhraseTile({ line, roman, meaning, scene, onHear }) {
     >
       <div style={{ display: 'flex', justifyContent: 'space-between', gap: 10, alignItems: 'flex-start' }}>
         <div style={{ flex: 1 }}>
-          <div className="hh-han-inline" style={{ fontSize: 24, lineHeight: 1.2 }}>{line}</div>
+          <div className="hh-han-inline" lang="ko" style={{ fontSize: 24, lineHeight: 1.2 }}>{line}</div>
           {roman && <div className="hh-roman">{roman}</div>}
           {meaning && (
             <div style={{ marginTop: 4, fontFamily: 'var(--hh-font-body)', fontSize: 15, fontWeight: 500 }}>
@@ -81,7 +81,7 @@ export function WordChip({ word, roman, meaning, scene }) {
       title={meaning}
     >
       <div style={{ display: 'flex', alignItems: 'baseline', gap: 6, width: '100%' }}>
-        <span className="hh-han-inline" style={{ fontSize: 22 }}>{word}</span>
+        <span className="hh-han-inline" lang="ko" style={{ fontSize: 22 }}>{word}</span>
         {scene && <span style={{ marginLeft: 'auto', fontSize: 18 }}>{scene}</span>}
       </div>
       {roman && <div className="hh-roman">{roman}</div>}

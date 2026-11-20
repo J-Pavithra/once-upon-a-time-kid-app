@@ -46,7 +46,7 @@ function WordStage({ unit }) {
         >
           <span style={{ fontSize: 32, textAlign: 'center' }}>{w.scene}</span>
           <span style={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
-            <span className="hh-han-word" style={{ fontSize: 28 }}>{w.word}</span>
+            <span className="hh-han-word" lang="ko" style={{ fontSize: 28 }}>{w.word}</span>
             {w.roman && <span className="hh-roman">{w.roman}</span>}
             <span style={{ fontFamily: 'var(--hh-font-body)', fontWeight: 500, color: 'var(--hh-ink-soft)' }}>{w.meaning}</span>
           </span>
@@ -72,7 +72,7 @@ function LoanwordsStage({ unit }) {
           }}
         >
           <span style={{ fontSize: 40, lineHeight: 1 }}>{w.scene}</span>
-          <span className="hh-han-word" style={{ fontSize: 26 }}>{w.word}</span>
+          <span className="hh-han-word" lang="ko" style={{ fontSize: 26 }}>{w.word}</span>
           {w.roman && <span className="hh-roman">{w.roman}</span>}
           <span style={{ fontFamily: 'var(--hh-font-body)', fontWeight: 500, fontSize: 14, color: 'var(--hh-ink-soft)' }}>{w.meaning}</span>
         </button>
@@ -91,15 +91,15 @@ function ListenStage({ unit }) {
           {unit.triples.map((t, i) => (
             <div key={i} style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 8 }}>
               <button className="hh-btn" style={{ flexDirection: 'column', minHeight: 68 }} onClick={() => { pop(); speak(t.plain, { voice: 'Seoyeon' }) }}>
-                <span className="hh-han-inline">{t.plain}</span>
+                <span className="hh-han-inline" lang="ko">{t.plain}</span>
                 <span className="hh-roman" style={{ fontSize: 12 }}>{t.plainRoman}</span>
               </button>
               <button className="hh-btn" style={{ flexDirection: 'column', minHeight: 68 }} onClick={() => { pop(); speak(t.aspirated, { voice: 'Seoyeon' }) }}>
-                <span className="hh-han-inline">{t.aspirated}</span>
+                <span className="hh-han-inline" lang="ko">{t.aspirated}</span>
                 <span className="hh-roman" style={{ fontSize: 12 }}>{t.aspRoman}</span>
               </button>
               <button className="hh-btn sun" style={{ flexDirection: 'column', minHeight: 68 }} onClick={() => { pop(); speak(t.tense, { voice: 'Seoyeon' }) }}>
-                <span className="hh-han-inline">{t.tense}</span>
+                <span className="hh-han-inline" lang="ko">{t.tense}</span>
                 <span className="hh-roman" style={{ fontSize: 12 }}>{t.tenseRoman}</span>
               </button>
             </div>
@@ -127,7 +127,7 @@ function PhraseStage({ unit }) {
         >
           <span style={{ fontSize: 32, textAlign: 'center' }}>{p.scene}</span>
           <span style={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
-            <span className="hh-han-word" style={{ fontSize: 24 }}>{p.line}</span>
+            <span className="hh-han-word" lang="ko" style={{ fontSize: 24 }}>{p.line}</span>
             {p.roman && <span className="hh-roman">{p.roman}</span>}
             <span style={{ fontFamily: 'var(--hh-font-body)', fontWeight: 500, color: 'var(--hh-ink-soft)' }}>{p.meaning}</span>
           </span>
@@ -166,7 +166,7 @@ function LinkingStage({ unit }) {
     <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
       {unit.examples.map((e, i) => (
         <div key={i} className="hh-fade hh-card">
-          <div className="hh-han-word" style={{ fontSize: 30, textAlign: 'center' }}>{e.word}</div>
+          <div className="hh-han-word" lang="ko" style={{ fontSize: 30, textAlign: 'center' }}>{e.word}</div>
           <div style={{ textAlign: 'center', marginTop: 8, fontFamily: 'var(--hh-font-body)' }}>
             written: <b>{e.written}</b> · spoken: <b style={{ color: 'var(--hh-terra)' }}>{e.spoken}</b>
           </div>
@@ -238,7 +238,7 @@ function NumbersStage() {
             onClick={() => { pop(); speak(k, { voice: 'Seoyeon' }) }}
             style={{ padding: 8, border: '3px solid var(--hh-ink)', borderRadius: 12, background: 'white', font: 'inherit', color: 'inherit', cursor: 'pointer', display: 'flex', flexDirection: 'column', gap: 2, alignItems: 'center' }}
           >
-            <span className="hh-han-word" style={{ fontSize: 22 }}>{k}</span>
+            <span className="hh-han-word" lang="ko" style={{ fontSize: 22 }}>{k}</span>
             <span className="hh-roman" style={{ fontSize: 12 }}>{r}</span>
             <span style={{ fontFamily: 'var(--hh-font-body)', fontWeight: 500, fontSize: 12, color: 'var(--hh-ink-soft)' }}>{e}</span>
           </button>
@@ -280,7 +280,7 @@ function ConversationStage({ unit }) {
                 font: 'inherit', color: 'inherit', cursor: 'pointer', textAlign: 'left',
               }}
             >
-              <div className="hh-han-word" style={{ fontSize: 22 }}>{d.line}</div>
+              <div className="hh-han-word" lang="ko" style={{ fontSize: 22 }}>{d.line}</div>
               {d.roman && <div className="hh-roman" style={{ marginTop: 2 }}>{d.roman}</div>}
               <div style={{ fontFamily: 'var(--hh-font-body)', fontWeight: 500, fontSize: 14, color: 'var(--hh-ink-soft)', marginTop: 2 }}>{d.meaning}</div>
             </button>
@@ -311,7 +311,7 @@ function CompoundVowelStage({ unit }) {
                 <div style={{ fontFamily: 'var(--hh-font-body)', fontWeight: 700, fontSize: 13, color: 'var(--hh-ink-soft)' }}>
                   {p.label}
                 </div>
-                <div style={{ fontFamily: 'var(--hh-font-han)', fontSize: 34, fontWeight: 700 }}>
+                <div lang="ko" style={{ fontFamily: 'var(--hh-font-han)', fontSize: 34, fontWeight: 700 }}>
                   {p.a} + {p.b} = <span style={{ color: 'var(--hh-terra)' }}>{p.result}</span>
                 </div>
               </div>
