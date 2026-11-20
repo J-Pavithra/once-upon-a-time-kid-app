@@ -1,6 +1,6 @@
 import AppShell from '../components/AppShell.jsx'
 import { useEffect, useState } from 'react'
-import confetti from 'canvas-confetti'
+import confetti from '../lib/confetti.js'
 import { getName, setName as saveName, isDone } from '../lib/storage.js'
 import Mira from '../components/Mira.jsx'
 import Pip from '../components/Pip.jsx'

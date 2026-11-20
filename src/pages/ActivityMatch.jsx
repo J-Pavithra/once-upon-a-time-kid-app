@@ -1,7 +1,7 @@
 import AppShell from '../components/AppShell.jsx'
 import PipSays from '../components/PipSays.jsx'
 import { useState } from 'react'
-import confetti from 'canvas-confetti'
+import confetti from '../lib/confetti.js'
 import { markDone } from '../lib/storage.js'
 import { pop, success, wrong as wrongSound, chime } from '../lib/sound.js'
 import MiniChalkboard from '../components/MiniChalkboard.jsx'

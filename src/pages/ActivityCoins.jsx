@@ -1,7 +1,7 @@
 import AppShell from '../components/AppShell.jsx'
 import PipSays from '../components/PipSays.jsx'
 import { useState, useMemo, useRef } from 'react'
-import confetti from 'canvas-confetti'
+import confetti from '../lib/confetti.js'
 import { markDone } from '../lib/storage.js'
 import { coin, success, wrong as wrongSound } from '../lib/sound.js'
 import { useChapter } from '../context/ChapterContext.jsx'
