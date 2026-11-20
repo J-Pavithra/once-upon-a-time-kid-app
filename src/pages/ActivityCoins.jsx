@@ -5,7 +5,6 @@ import confetti from '../lib/confetti.js'
 import { markDone } from '../lib/storage.js'
 import { coin, success, wrong as wrongSound } from '../lib/sound.js'
 import { useChapter } from '../context/ChapterContext.jsx'
-import { motion } from 'framer-motion'
 
 function makeRound() {
   return 3 + Math.floor(Math.random() * 8) // 3..10
@@ -69,22 +68,23 @@ export default function ActivityCoins() {
         <p className="page-lead">How many coins? Write the number in the box.</p>
         <div className="scene" style={{ position: 'relative', minHeight: 240 }}>
           {positions.map((p, i) => (
-            <motion.button
+            <button
               key={`${round}-${i}`}
-              whileTap={{ scale: 1.35, rotate: p.r + 40 }}
+              className="coin-tap"
               onClick={() => tapCoin(i)}
               aria-label="coin"
               style={{
                 position: 'absolute', left: `${p.x}%`, top: `${p.y}%`,
                 background: 'transparent', border: 'none', padding: 0, cursor: 'pointer',
                 fontSize: '2.4rem', lineHeight: 1,
-                transform: `rotate(${p.r}deg)`,
+                '--coin-r': `${p.r}deg`,
+                transform: 'rotate(var(--coin-r))',
                 filter: tapped[i]
                   ? 'drop-shadow(0 0 12px #F6C34F) drop-shadow(0 4px 0 rgba(0,0,0,0.15))'
                   : 'drop-shadow(0 4px 0 rgba(0,0,0,0.15))',
-                transition: 'filter 0.2s',
+                transition: 'filter 0.2s, transform 0.12s',
               }}
-            >🪙</motion.button>
+            >🪙</button>
           ))}
           <div style={{ position: 'absolute', bottom: 8, right: 12, background: 'rgba(255,255,255,0.85)', padding: '4px 10px', borderRadius: 999, fontFamily: 'var(--font-display)', fontSize: '0.9rem', border: '2px solid var(--ink)' }}>
             Tap coins to count: {tappedCount}

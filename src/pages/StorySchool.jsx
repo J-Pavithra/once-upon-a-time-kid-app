@@ -3,7 +3,6 @@ import PipSays from '../components/PipSays.jsx'
 import Chalkboard from '../components/Chalkboard.jsx'
 import PaperPen from '../components/PaperPen.jsx'
 import { useState } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
 import { pop } from '../lib/sound.js'
 
 export default function StorySchool() {
@@ -25,12 +24,9 @@ export default function StorySchool() {
             transition: 'background 0.4s',
           }}
         >
-          <AnimatePresence mode="wait">
-            <motion.div
+            <div
               key={now ? 'now' : 'old'}
-              initial={{ opacity: 0, y: 10, scale: 0.95 }}
-              animate={{ opacity: 1, y: 0, scale: 1 }}
-              exit={{ opacity: 0, y: -10, scale: 0.95 }}
+              className="fm-scene-in"
               style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 8 }}
             >
               {now ? <PaperPen size={230} /> : <Chalkboard size={230} />}
@@ -38,8 +34,7 @@ export default function StorySchool() {
               <div style={{ fontFamily: 'var(--font-display)', color: now ? 'var(--ink)' : 'white', fontSize: '1.1rem', textAlign: 'center' }}>
                 {now ? 'Books, pencils and paper.' : 'A black slate and chalk.'}
               </div>
-            </motion.div>
-          </AnimatePresence>
+            </div>
           <button className="sun" onClick={() => { pop(); setNow(n => !n) }}>
             {now ? 'Back to long ago' : 'Fast-forward to today'}
           </button>

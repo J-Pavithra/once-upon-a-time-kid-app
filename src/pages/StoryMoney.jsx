@@ -1,6 +1,5 @@
 import AppShell from '../components/AppShell.jsx'
 import PipSays from '../components/PipSays.jsx'
-import { motion } from 'framer-motion'
 import { useState } from 'react'
 import { coin, pop } from '../lib/sound.js'
 
@@ -21,10 +20,10 @@ export default function StoryMoney() {
         <div className="scene" style={{ flexDirection: 'column', gap: 16 }}>
           <div style={{ display: 'flex', gap: 24, justifyContent: 'center', alignItems: 'end' }}>
             {steps.map((s, idx) => (
-              <motion.div key={s.emoji} animate={{ scale: idx === i ? 1.2 : 0.9, opacity: idx <= i ? 1 : 0.35 }} transition={{ duration: 0.3 }} style={{ textAlign: 'center' }}>
+              <div key={s.emoji} style={{ textAlign: 'center', transform: `scale(${idx === i ? 1.2 : 0.9})`, opacity: idx <= i ? 1 : 0.35, transition: 'transform 0.3s, opacity 0.3s' }}>
                 <div style={{ fontSize: '3.4rem', lineHeight: 1 }}>{s.emoji}</div>
                 <div className="chip" style={{ marginTop: 6 }}>{s.label}</div>
-              </motion.div>
+              </div>
             ))}
           </div>
           <div style={{ fontFamily: 'var(--font-display)', fontWeight: 600, fontSize: '1.15rem', minHeight: '1.5em', textAlign: 'center' }}>

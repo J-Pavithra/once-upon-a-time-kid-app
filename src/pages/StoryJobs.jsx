@@ -1,7 +1,6 @@
 import AppShell from '../components/AppShell.jsx'
 import PipSays from '../components/PipSays.jsx'
 import { useState } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
 import { pop } from '../lib/sound.js'
 
 const jobs = [
@@ -26,37 +25,31 @@ export default function StoryJobs() {
         <p className="page-lead">Nobody can make everything by themselves. Each one does <b>one thing well</b>. Then we all swap!</p>
 
         <div className="scene" style={{ flexDirection: 'column', gap: 14, background: pick ? pick.bg : undefined, transition: 'background 0.35s' }}>
-          <AnimatePresence mode="wait">
-            {pick ? (
-              <motion.div
+          {pick ? (
+              <div
                 key={pick.label}
-                initial={{ opacity: 0, scale: 0.9, y: 10 }}
-                animate={{ opacity: 1, scale: 1, y: 0 }}
-                exit={{ opacity: 0, scale: 0.9, y: -10 }}
+                className="fm-scene-in"
                 style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 8 }}
               >
                 <div style={{ display: 'flex', gap: 10, alignItems: 'end' }}>
                   {pick.scene.map((e, i) => (
-                    <motion.span
+                    <span
                       key={i}
-                      initial={{ y: 20, opacity: 0 }}
-                      animate={{ y: 0, opacity: 1 }}
-                      transition={{ delay: i * 0.06 }}
-                      style={{ fontSize: i === 0 ? '3.6rem' : '2.4rem', lineHeight: 1, filter: 'drop-shadow(0 4px 0 rgba(0,0,0,0.08))' }}
+                      className="fm-rise-in"
+                      style={{ display: 'inline-block', animationDelay: `${i * 0.06}s`, fontSize: i === 0 ? '3.6rem' : '2.4rem', lineHeight: 1, filter: 'drop-shadow(0 4px 0 rgba(0,0,0,0.08))' }}
                     >
                       {e}
-                    </motion.span>
+                    </span>
                   ))}
                 </div>
                 <div className="chip" style={{ marginTop: 4 }}>{pick.label}</div>
                 <div style={{ fontFamily: 'var(--font-display)', fontSize: '1.15rem' }}>"{pick.says}"</div>
-              </motion.div>
+              </div>
             ) : (
-              <motion.div key="prompt" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} style={{ fontFamily: 'var(--font-display)', color: 'var(--ink-soft)' }}>
+              <div key="prompt" className="fm-fade-in" style={{ fontFamily: 'var(--font-display)', color: 'var(--ink-soft)' }}>
                 Tap a job to see them at work.
-              </motion.div>
+              </div>
             )}
-          </AnimatePresence>
         </div>
 
         <div className="grid-3" style={{ width: '100%' }}>

@@ -1,6 +1,5 @@
 import AppShell from '../components/AppShell.jsx'
 import PipSays from '../components/PipSays.jsx'
-import { motion, AnimatePresence } from 'framer-motion'
 import { useState } from 'react'
 import { grow, chime } from '../lib/sound.js'
 
@@ -28,11 +27,9 @@ export default function StoryBread() {
               </div>
             ))}
           </div>
-          <AnimatePresence>
-            <motion.div key={i} initial={{ scale: 0.6, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} exit={{ scale: 0.6, opacity: 0 }} style={{ fontFamily: 'var(--font-display)', fontSize: '1.2rem' }}>
-              {i < stages.length - 1 ? 'Watch it grow →' : '🎉 Yummy!'}
-            </motion.div>
-          </AnimatePresence>
+          <div key={i} className="fm-pop-in" style={{ fontFamily: 'var(--font-display)', fontSize: '1.2rem' }}>
+            {i < stages.length - 1 ? 'Watch it grow →' : '🎉 Yummy!'}
+          </div>
           <div style={{ display: 'flex', gap: 10, justifyContent: 'center' }}>
             <button className="ghost" onClick={() => setI(0)} disabled={i === 0}>Start over</button>
             <button className="sun" onClick={() => {

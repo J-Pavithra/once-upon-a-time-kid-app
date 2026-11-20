@@ -1,4 +1,3 @@
-import { motion, AnimatePresence } from 'framer-motion'
 
 // Straw thatch strands radiating from the apex to the roof rim.
 const APEX = { x: 130, y: 40 }
@@ -78,15 +77,17 @@ export default function MudHut({ open = false, size = 260 }) {
         <path d="M 121 172 Q 121 140 130 140 Q 139 140 139 172 Z" fill="#5A3F2A" opacity="0.7" />
       )}
       {/* Door leaf (swings on left hinge) */}
-      <motion.path
+      <path
         d="M 118 172 Q 118 138 130 138 Q 142 138 142 172 Z"
         fill="#7A4A2F"
         stroke="#3B2F2F"
         strokeWidth="2"
-        initial={false}
-        animate={{ scaleX: open ? 0.1 : 1, opacity: open ? 0.35 : 1, x: open ? -2 : 0 }}
-        transition={{ duration: 0.45 }}
-        style={{ transformOrigin: '118px 172px' }}
+        style={{
+          transformOrigin: '118px 172px',
+          transform: open ? 'translateX(-2px) scaleX(0.1)' : 'none',
+          opacity: open ? 0.35 : 1,
+          transition: 'transform 0.45s, opacity 0.45s',
+        }}
       />
       {/* door planks */}
       {!open && (
@@ -137,26 +138,26 @@ export default function MudHut({ open = false, size = 260 }) {
       <ellipse cx={APEX.x} cy={APEX.y - 4} rx="4" ry="2" fill="#5A3520" />
 
       {/* smoke when door is open */}
-      <AnimatePresence>
-        {open && (
-          <g>
-            {[0, 1, 2].map(i => (
-              <motion.circle
-                key={i}
-                cx={APEX.x + 8}
-                cy={APEX.y - 2}
-                r={4 + i * 0.8}
-                fill="#EDEDED"
-                stroke="#B7B0A6"
-                strokeWidth="1"
-                initial={{ y: 0, opacity: 0 }}
-                animate={{ y: -22 - i * 6, x: (i % 2 === 0 ? -4 : 4), opacity: [0, 0.85, 0] }}
-                transition={{ duration: 2.2, repeat: Infinity, delay: i * 0.6, ease: 'easeOut' }}
-              />
-            ))}
-          </g>
-        )}
-      </AnimatePresence>
+      {open && (
+        <g>
+          {[0, 1, 2].map(i => (
+            <circle
+              key={i}
+              className="fm-smoke"
+              cx={APEX.x + 8}
+              cy={APEX.y - 2}
+              r={4 + i * 0.8}
+              fill="#EDEDED"
+              stroke="#B7B0A6"
+              strokeWidth="1"
+              style={{
+                '--fm-to': `${-22 - i * 6}px`, '--fm-x': `${i % 2 === 0 ? -4 : 4}px`, '--fm-peak': 0.85,
+                animationDuration: '2.2s', animationDelay: `${i * 0.6}s`,
+              }}
+            />
+          ))}
+        </g>
+      )}
     </svg>
   )
 }

@@ -1,6 +1,5 @@
 import AppShell from '../components/AppShell.jsx'
 import PipSays from '../components/PipSays.jsx'
-import { motion, AnimatePresence } from 'framer-motion'
 import { useState } from 'react'
 import { coin, chime } from '../lib/sound.js'
 
@@ -30,16 +29,9 @@ export default function StoryPiggy() {
         <p className="page-lead">Mira wants a <b>bicycle</b>, but it costs a lot. So every week she puts a little money in her piggy bank and waits.</p>
         <div className="scene" style={{ flexDirection: 'column', gap: 12 }}>
           <div style={{ position: 'relative', height: 160, width: '100%', display: 'flex', justifyContent: 'center', alignItems: 'end' }}>
-            <AnimatePresence>
-              {Array.from({ length: dropping }).map((_, i) => (
-                <motion.div key={i}
-                  initial={{ y: -140, opacity: 1 }}
-                  animate={{ y: 60, opacity: 0 }}
-                  transition={{ duration: 0.6, delay: i === dropping - 1 ? 0 : 999 }}
-                  style={{ position: 'absolute', fontSize: '2rem', top: 0 }}
-                >🪙</motion.div>
-              ))}
-            </AnimatePresence>
+            {dropping > 0 && (
+              <div key={dropping} className="fm-coin-drop" style={{ position: 'absolute', fontSize: '2rem', top: 0 }}>🪙</div>
+            )}
             <div style={{ fontSize: '5rem', lineHeight: 1 }}>🐷</div>
           </div>
           <div style={{ display: 'flex', gap: 10, justifyContent: 'center', alignItems: 'center' }}>
@@ -48,9 +40,9 @@ export default function StoryPiggy() {
             <button className="ghost" onClick={() => { setCoins(0); setDropping(0) }}>Reset</button>
           </div>
           {coins >= goal && (
-            <motion.div initial={{ scale: 0.5, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} style={{ fontFamily: 'var(--font-display)', fontSize: '1.3rem', textAlign: 'center' }}>
+            <div className="fm-pop-in" style={{ fontFamily: 'var(--font-display)', fontSize: '1.3rem', textAlign: 'center' }}>
               🎉 Enough for the bicycle! 🚲
-            </motion.div>
+            </div>
           )}
         </div>
         <PipSays>Keeping money for later is called <b>saving</b>. It takes <b>patience</b>!</PipSays>

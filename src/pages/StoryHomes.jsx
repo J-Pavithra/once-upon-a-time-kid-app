@@ -4,7 +4,6 @@ import Cave from '../components/Cave.jsx'
 import MudHut from '../components/MudHut.jsx'
 import ModernHouse from '../components/ModernHouse.jsx'
 import { useState } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
 import { pop, crackle, creak, chime } from '../lib/sound.js'
 
 const homes = [
@@ -67,20 +66,11 @@ export default function StoryHomes() {
             minHeight: 240,
           }}
         >
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={current.key}
-              initial={{ opacity: 0, y: 12, scale: 0.96 }}
-              animate={{ opacity: 1, y: 0, scale: 1 }}
-              exit={{ opacity: 0, y: -8, scale: 0.98 }}
-              transition={{ duration: 0.35 }}
-              style={{ width: '100%', maxWidth: 420 }}
-            >
+            <div key={current.key} className="fm-scene-in" style={{ width: '100%', maxWidth: 420 }}>
               {current.key === 'cave'  && <Cave fire={fire} size={420} />}
               {current.key === 'hut'   && <MudHut open={door} size={420} />}
               {current.key === 'house' && <ModernHouse night={night} size={420} />}
-            </motion.div>
-          </AnimatePresence>
+            </div>
         </div>
 
         {/* Caption row */}

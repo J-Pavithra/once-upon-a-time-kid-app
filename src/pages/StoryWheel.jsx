@@ -1,7 +1,6 @@
 import AppShell from '../components/AppShell.jsx'
 import PipSays from '../components/PipSays.jsx'
 import Wheel from '../components/Wheel.jsx'
-import { motion } from 'framer-motion'
 import { useState } from 'react'
 import { roll } from '../lib/sound.js'
 
@@ -20,15 +19,13 @@ export default function StoryWheel() {
               <div style={{ fontSize: '4rem', lineHeight: 1 }}>🪨</div>
               <div style={{ fontFamily: 'var(--font-display)', color: 'var(--ink-soft)' }}>oof!</div>
             </div>
-            <motion.div
+            <div
               key={rolled ? 'rolled' : 'still'}
-              initial={{ x: 0, rotate: 0 }}
-              animate={rolled ? { x: [-30, 30, -30], rotate: [-360, 720, -360] } : { x: 0, rotate: 0 }}
-              transition={rolled ? { duration: 1.4, ease: 'easeInOut' } : { duration: 0.3 }}
+              className={rolled ? 'fm-wheel-roll' : undefined}
               style={{ display: 'inline-block' }}
             >
               <Wheel size={90} />
-            </motion.div>
+            </div>
             <div style={{ textAlign: 'center' }}>
               <div className="chip">AFTER</div>
               <div style={{ fontSize: '4rem', lineHeight: 1 }}>🛒</div>

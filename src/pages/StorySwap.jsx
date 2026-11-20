@@ -1,6 +1,5 @@
 import AppShell from '../components/AppShell.jsx'
 import PipSays from '../components/PipSays.jsx'
-import { motion, AnimatePresence } from 'framer-motion'
 import { useState } from 'react'
 import { pop, chime } from '../lib/sound.js'
 
@@ -20,57 +19,44 @@ export default function StorySwap() {
         <p className="page-lead">Mira had <b>too many apples</b>. Her friend had <b>too many fish</b>. So they swapped. Now they both have apples <em>and</em> fish!</p>
         <div className="scene sky" style={{ flexDirection: 'column', gap: 16 }}>
           <div style={{ display: 'flex', gap: 24, alignItems: 'center', justifyContent: 'center', width: '100%' }}>
-            <motion.div layout style={{ textAlign: 'center' }}>
+            <div style={{ textAlign: 'center' }}>
               <div style={{ fontSize: '2.4rem' }}>🧒</div>
-              <AnimatePresence mode="wait">
-                {!swapped ? (
-                  <motion.div key="apples" initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -8 }} style={{ fontSize: '2.4rem' }}>
-                    🍎🍎🍎
-                  </motion.div>
-                ) : (
-                  <motion.div key="mix-m" initial={{ opacity: 0, scale: 0.7 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.7 }} style={{ fontSize: '2.4rem' }}>
-                    🍎🐟🍎
-                  </motion.div>
-                )}
-              </AnimatePresence>
-              <div className="chip">Mira</div>
-            </motion.div>
-
-            <AnimatePresence>
-              {!swapped && (
-                <motion.div
-                  key="swapicon"
-                  initial={{ opacity: 0, scale: 0.5 }}
-                  animate={{ opacity: 1, scale: 1, rotate: [0, 360] }}
-                  exit={{ opacity: 0, scale: 0.5 }}
-                  transition={{ duration: 0.6 }}
-                  style={{ fontSize: '2.6rem' }}
-                >
-                  🔄
-                </motion.div>
+              {!swapped ? (
+                <div key="apples" className="fm-rise-in" style={{ fontSize: '2.4rem' }}>
+                  🍎🍎🍎
+                </div>
+              ) : (
+                <div key="mix-m" className="fm-pop-in" style={{ fontSize: '2.4rem' }}>
+                  🍎🐟🍎
+                </div>
               )}
-            </AnimatePresence>
+              <div className="chip">Mira</div>
+            </div>
 
-            <motion.div layout style={{ textAlign: 'center' }}>
+            {!swapped && (
+              <div key="swapicon" className="fm-spin-in" style={{ fontSize: '2.6rem' }}>
+                🔄
+              </div>
+            )}
+
+            <div style={{ textAlign: 'center' }}>
               <div style={{ fontSize: '2.4rem' }}>🧑</div>
-              <AnimatePresence mode="wait">
-                {!swapped ? (
-                  <motion.div key="fish" initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -8 }} style={{ fontSize: '2.4rem' }}>
-                    🐟🐟🐟
-                  </motion.div>
-                ) : (
-                  <motion.div key="mix-f" initial={{ opacity: 0, scale: 0.7 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.7 }} style={{ fontSize: '2.4rem' }}>
-                    🐟🍎🐟
-                  </motion.div>
-                )}
-              </AnimatePresence>
+              {!swapped ? (
+                <div key="fish" className="fm-rise-in" style={{ fontSize: '2.4rem' }}>
+                  🐟🐟🐟
+                </div>
+              ) : (
+                <div key="mix-f" className="fm-pop-in" style={{ fontSize: '2.4rem' }}>
+                  🐟🍎🐟
+                </div>
+              )}
               <div className="chip">Friend</div>
-            </motion.div>
+            </div>
           </div>
           {swapped && (
-            <motion.div initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} style={{ fontFamily: 'var(--font-display)', textAlign: 'center' }}>
+            <div className="fm-rise-in" style={{ fontFamily: 'var(--font-display)', textAlign: 'center' }}>
               🎉 Both have apples <em>and</em> fish now!
-            </motion.div>
+            </div>
           )}
           <button className="sun" onClick={toggle}>{swapped ? 'Swap back' : 'Swap!'}</button>
         </div>

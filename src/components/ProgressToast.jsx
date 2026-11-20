@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
 import { getName } from '../lib/storage.js'
 import { chime } from '../lib/sound.js'
 import { useChapter } from '../context/ChapterContext.jsx'
@@ -29,13 +28,9 @@ export default function ProgressToast({ pageIndex }) {
 
   return (
     <div style={{ position: 'sticky', top: 8, zIndex: 30, pointerEvents: 'none' }} className="no-print" aria-live="polite">
-      <AnimatePresence>
-        {show && (
-          <motion.div
-            initial={{ y: -40, opacity: 0, scale: 0.9 }}
-            animate={{ y: 0, opacity: 1, scale: 1 }}
-            exit={{ y: -20, opacity: 0, scale: 0.95 }}
-            transition={{ type: 'spring', stiffness: 260, damping: 22 }}
+      {show && (
+          <div
+            className="fm-toast-in"
             style={{
               margin: '0 auto', maxWidth: 460,
               background: 'linear-gradient(135deg, #F6C34F 0%, #E8763A 100%)',
@@ -54,9 +49,8 @@ export default function ProgressToast({ pageIndex }) {
               <div style={{ fontSize: '0.92rem', color: 'var(--ink-soft)' }}>{show.note}</div>
             </div>
             <div style={{ fontSize: '0.8rem', color: 'var(--ink-soft)', flexShrink: 0 }}>tap ✕</div>
-          </motion.div>
+          </div>
         )}
-      </AnimatePresence>
     </div>
   )
 }

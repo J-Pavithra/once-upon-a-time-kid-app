@@ -1,4 +1,3 @@
-import { motion } from 'framer-motion'
 
 export default function Cave({ fire = false, size = 260 }) {
   return (
@@ -43,31 +42,31 @@ export default function Cave({ fire = false, size = 260 }) {
       {/* flames */}
       {fire && (
         <g>
-          <motion.path
+          <path
+            className="fm-flame-a"
             d="M120 172 Q118 158 128 150 Q134 158 132 168 Q138 156 142 168 Q145 162 140 176 Z"
             fill="#FF8A2A"
-            initial={false}
-            animate={{ scaleY: [1, 1.18, 0.92, 1.12, 1], y: [0, -2, 1, -1, 0] }}
-            transition={{ duration: 0.9, repeat: Infinity, ease: 'easeInOut' }}
             style={{ transformOrigin: '130px 176px' }}
           />
-          <motion.path
+          <path
+            className="fm-flame-b"
             d="M124 168 Q124 158 130 152 Q136 160 132 168 Z"
             fill="#FFD24A"
-            animate={{ scaleY: [1, 0.85, 1.15, 1], scaleX: [1, 1.1, 0.9, 1] }}
-            transition={{ duration: 0.6, repeat: Infinity, ease: 'easeInOut' }}
             style={{ transformOrigin: '130px 170px' }}
           />
           {/* embers */}
           {[0, 1, 2].map(i => (
-            <motion.circle
+            <circle
               key={i}
+              className="fm-ember"
               cx={124 + i * 6}
               cy="164"
               r="1.4"
               fill="#FFD24A"
-              animate={{ y: [-6 - i * 3, -22 - i * 4], opacity: [1, 0] }}
-              transition={{ duration: 1.4 + i * 0.2, repeat: Infinity, delay: i * 0.3, ease: 'easeOut' }}
+              style={{
+                '--fm-from': `${-6 - i * 3}px`, '--fm-to': `${-22 - i * 4}px`,
+                animationDuration: `${1.4 + i * 0.2}s`, animationDelay: `${i * 0.3}s`,
+              }}
             />
           ))}
         </g>

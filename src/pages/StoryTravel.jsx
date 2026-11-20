@@ -1,7 +1,6 @@
 import AppShell from '../components/AppShell.jsx'
 import PipSays from '../components/PipSays.jsx'
 import { useState } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
 import { step, clop, boatHorn, whistle, whoosh } from '../lib/sound.js'
 
 const modes = [
@@ -31,31 +30,25 @@ export default function StoryTravel() {
         <p className="page-lead">First we walked. Then we rode horses. Then boats, then trains, then aeroplanes.</p>
 
         <div className="scene" style={{ flexDirection: 'column', gap: 10, background: mode.bg, transition: 'background 0.35s', overflow: 'hidden' }}>
-          <AnimatePresence mode="wait">
-            <motion.div
+            <div
               key={mode.label}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
+              className="fm-fade-in"
               style={{ width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 6 }}
             >
-              <motion.div
+              <div
                 key={`travel-${mode.label}`}
-                initial={{ x: '-110%' }}
-                animate={{ x: '110%' }}
-                transition={{ duration: speedDur[mode.speed], ease: 'linear', repeat: Infinity }}
-                style={{ fontSize: '3rem', whiteSpace: 'nowrap' }}
+                className="fm-travel"
+                style={{ fontSize: '3rem', whiteSpace: 'nowrap', animationDuration: `${speedDur[mode.speed]}s` }}
               >
                 {mode.scene.slice(0, 2).join(' ')}
-              </motion.div>
+              </div>
               <div style={{ display: 'flex', gap: 8, alignItems: 'end' }}>
                 {mode.scene.slice(2).map((e, k) => (
                   <span key={k} style={{ fontSize: '2rem' }}>{e}</span>
                 ))}
               </div>
               <div className="chip" style={{ marginTop: 4 }}>{mode.label}</div>
-            </motion.div>
-          </AnimatePresence>
+            </div>
 
           <div style={{ width: '100%', display: 'flex', gap: 6, justifyContent: 'center', flexWrap: 'wrap' }}>
             {modes.map((m, idx) => (

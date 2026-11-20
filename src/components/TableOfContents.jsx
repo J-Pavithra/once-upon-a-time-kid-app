@@ -1,6 +1,5 @@
 import { useEffect } from 'react'
 import { useNavigate, useLocation } from 'react-router-dom'
-import { motion, AnimatePresence } from 'framer-motion'
 import { getScore } from '../lib/storage.js'
 import { pop } from '../lib/sound.js'
 import { useChapter } from '../context/ChapterContext.jsx'
@@ -26,10 +25,10 @@ export default function TableOfContents({ open, onClose }) {
   }
 
   return (
-    <AnimatePresence>
+    <>
       {open && (
-        <motion.div
-          initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
+        <div
+          className="fm-fade-in"
           onClick={onClose}
           style={{
             position: 'fixed', inset: 0, zIndex: 60,
@@ -38,9 +37,8 @@ export default function TableOfContents({ open, onClose }) {
             padding: 16, overflowY: 'auto',
           }}
         >
-          <motion.div
-            initial={{ y: -20, scale: 0.96 }} animate={{ y: 0, scale: 1 }} exit={{ y: -10, scale: 0.96 }}
-            transition={{ type: 'spring', stiffness: 260, damping: 22 }}
+          <div
+            className="fm-panel-in"
             onClick={e => e.stopPropagation()}
             style={{
               width: '100%', maxWidth: 720, background: 'var(--cream)',
@@ -96,9 +94,9 @@ export default function TableOfContents({ open, onClose }) {
                 )
               })}
             </div>
-          </motion.div>
-        </motion.div>
+          </div>
+        </div>
       )}
-    </AnimatePresence>
+    </>
   )
 }

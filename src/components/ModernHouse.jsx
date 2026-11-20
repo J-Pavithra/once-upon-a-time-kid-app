@@ -1,4 +1,3 @@
-import { motion, AnimatePresence } from 'framer-motion'
 
 export default function ModernHouse({ night = false, size = 260 }) {
   const skyGrad = night
@@ -19,19 +18,17 @@ export default function ModernHouse({ night = false, size = 260 }) {
       <rect width="260" height="200" fill="url(#daysky)" />
 
       {/* sun / moon */}
-      <AnimatePresence mode="wait">
-        {night ? (
-          <motion.g key="moon" initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }}>
+      {night ? (
+          <g key="moon" className="fm-drop-in">
             <circle cx="210" cy="40" r="18" fill="#F1E9C5" />
             <circle cx="203" cy="35" r="14" fill="url(#daysky)" />
             {[[180, 30], [230, 22], [190, 60], [240, 55], [220, 75]].map(([x, y], i) => (
-              <motion.text key={i} x={x} y={y} fontSize="8" fill="#FFF3C0"
-                animate={{ opacity: [0.4, 1, 0.4] }}
-                transition={{ duration: 2 + i * 0.3, repeat: Infinity }}>✨</motion.text>
+              <text key={i} className="fm-twinkle" x={x} y={y} fontSize="8" fill="#FFF3C0"
+                style={{ animationDuration: `${2 + i * 0.3}s` }}>✨</text>
             ))}
-          </motion.g>
+          </g>
         ) : (
-          <motion.g key="sun" initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }}>
+          <g key="sun" className="fm-drop-in">
             <circle cx="210" cy="40" r="18" fill="#F6C34F" stroke="#E8B23A" strokeWidth="2" />
             {[0, 45, 90, 135, 180, 225, 270, 315].map(a => {
               const r = (a * Math.PI) / 180
@@ -42,9 +39,8 @@ export default function ModernHouse({ night = false, size = 260 }) {
                   stroke="#F6C34F" strokeWidth="3" strokeLinecap="round" />
               )
             })}
-          </motion.g>
+          </g>
         )}
-      </AnimatePresence>
 
       {/* ground */}
       <path d="M0 170 Q80 165 160 170 T260 168 L260 200 L0 200 Z" fill={night ? '#3B4A3B' : '#A8CBA0'} stroke="#3B2F2F" strokeWidth="2" />
@@ -88,15 +84,13 @@ export default function ModernHouse({ night = false, size = 260 }) {
       {night && (
         <g>
           {[0, 1, 2].map(i => (
-            <motion.circle
+            <circle
               key={i}
+              className="fm-smoke"
               cx={178} cy={62}
               r={4 + i * 0.6}
               fill="#B7B0A6"
-              opacity="0.75"
-              initial={{ y: 0, opacity: 0 }}
-              animate={{ y: -28 - i * 6, opacity: [0, 0.7, 0] }}
-              transition={{ duration: 2.4, repeat: Infinity, delay: i * 0.7, ease: 'easeOut' }}
+              style={{ '--fm-to': `${-28 - i * 6}px`, '--fm-peak': 0.7, animationDelay: `${i * 0.7}s` }}
             />
           ))}
         </g>

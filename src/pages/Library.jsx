@@ -1,6 +1,5 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { motion } from 'framer-motion'
 import { chapters, upcomingChapters } from '../data/chapters.js'
 import { THEMES } from '../data/themes.js'
 import { getName, setName, getTheme, setTheme, getScore } from '../lib/storage.js'
@@ -110,12 +109,7 @@ export default function Library() {
           const score = getScore(ch.id, ch.activities)
           const total = ch.pages.length
           return (
-            <motion.div
-              key={ch.id}
-              initial={{ opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: i * 0.06 }}
-            >
+            <div key={ch.id} className="fm-rise-in" style={{ animationDelay: `${i * 0.06}s` }}>
               <Link
                 to={`/${ch.id}`}
                 style={{ textDecoration: 'none', color: 'inherit', display: 'block' }}
@@ -145,18 +139,14 @@ export default function Library() {
                   </div>
                 </div>
               </Link>
-            </motion.div>
+            </div>
           )
         })}
 
         {upcomingChapters.map((u, i) => (
-          <motion.div
-            key={u.id}
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 0.65, y: 0 }}
-            transition={{ delay: (chapters.length + i) * 0.06 }}
-          >
+          <div key={u.id} className="fm-rise-in" style={{ animationDelay: `${(chapters.length + i) * 0.06}s` }}>
             <div style={{
+              opacity: 0.65,
               background: u.heroBg,
               border: '3px dashed rgba(59,47,47,0.35)', borderRadius: 24,
               padding: 20, minHeight: 240,
@@ -170,7 +160,7 @@ export default function Library() {
                 <span className="chip" style={{ background: 'white' }}>coming soon</span>
               </div>
             </div>
-          </motion.div>
+          </div>
         ))}
       </div>
 
