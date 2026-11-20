@@ -10,6 +10,10 @@ full beginner Korean course.
 > Runs entirely in your browser — no accounts, no servers, no tracking; voices
 > come from your device.
 
+The only runtime dependencies are React and React Router. Fonts ship with the
+app, the confetti is a 50-line canvas burst, and every animation is plain CSS,
+so the site makes no network request to any host but its own.
+
 ## Chapters
 
 | Chapter | Audience | What it is |
@@ -34,6 +38,19 @@ Other scripts: `npm run build` (static site in `dist/`), `npm run preview`
 (serve the build), `npm run lint`.
 
 Requires Node 20 or newer.
+
+## Built with
+
+| Piece | What |
+| --- | --- |
+| UI | React 19, React Router 7, Vite 8 |
+| Speech | Web Speech API (`speechSynthesis`), see `src/lib/tts.js` |
+| Sound effects | WebAudio oscillators, see `src/lib/sound.js` |
+| Fonts | Fredoka, Nunito, Baloo 2, Noto Sans KR and Jua, bundled via @fontsource |
+| Animation | CSS keyframes and transitions in `src/styles.css` (the `fm-*` classes) |
+| Confetti | `src/lib/confetti.js`, dependency-free canvas burst |
+| Storage | `localStorage` only, see `src/lib/storage.js` |
+| Hosting | Static files on GitHub Pages via `.github/workflows/deploy.yml` |
 
 ## Deploy to GitHub Pages
 
@@ -74,8 +91,12 @@ src/
   components/          Shared UI (AppShell, characters, chalkboards, toasts)
   context/             Chapter context provider
   data/chapters.js     Chapter registry — add a chapter by pushing an entry here
-  lib/                 tts.js (Web Speech), sound.js (WebAudio effects), storage.js (localStorage)
-  styles.css           Global styles
+  lib/
+    tts.js             Web Speech wrapper: speak / stop / isSpeaking / hasKoreanVoice
+    sound.js           WebAudio sound effects
+    storage.js         localStorage progress, names and theme
+    confetti.js        Canvas confetti burst
+  styles.css           Global styles and the fm-* animation keyframes
 public/                Icons and static files
 ```
 
@@ -84,7 +105,10 @@ public/                Icons and static files
 1. Fork and create a branch.
 2. `npm run lint` and `npm run build` must pass.
 3. Keep it browser-only: no servers, accounts, API keys or trackers.
-4. Open a pull request describing what changed and which chapter it touches.
+4. Keep it dependency-light: prefer CSS, Web APIs and small local helpers over
+   new npm packages. React and React Router are the only runtime dependencies
+   besides the bundled fonts.
+5. Open a pull request describing what changed and which chapter it touches.
 
 Issues and ideas for new chapters are welcome.
 
