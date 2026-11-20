@@ -1,0 +1,217 @@
+/* Hello, Hangul! — scoped to .hh */
+.hh {
+  position: relative; z-index: 1;
+  --hh-cream: #FFF8EC;
+  --hh-ink:   #2A211B;
+  --hh-ink-soft: #6B5A55;
+  --hh-terra: #E8763A;
+  --hh-sun:   #FFC93C;
+  --hh-blush: #F19A8E;
+  --hh-mint:  #A8CBA0;
+  --hh-sky:   #A5D8F3;
+  --hh-plum:  #A46BE8;
+  --hh-tongue: #F0938A;
+
+  --hh-font-ui:  'Fredoka', system-ui, sans-serif;
+  --hh-font-body:'Baloo 2', 'Nunito', system-ui, sans-serif;
+  --hh-font-han: 'Noto Sans KR', system-ui, sans-serif;
+  --hh-font-han-fun: 'Jua', 'Noto Sans KR', system-ui, sans-serif;
+
+  min-height: 100vh;
+  background: var(--hh-cream);
+  color: var(--hh-ink);
+  font-family: var(--hh-font-body);
+  font-weight: 500; font-size: 18px; line-height: 1.55;
+}
+.hh * { box-sizing: border-box; }
+
+.hh-app {
+  max-width: 780px; margin: 0 auto;
+  padding: 12px 16px 24px;
+  min-height: 100vh;
+  display: flex; flex-direction: column; gap: 10px;
+  position: relative;
+}
+.hh-topbar { display: flex; align-items: center; gap: 10px; padding: 4px; flex-wrap: wrap; }
+.hh-topbar .spacer { flex: 1; }
+
+.hh-pill {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 6px 14px;
+  font-family: var(--hh-font-ui); font-weight: 600; font-size: 14px;
+  border: 3px solid var(--hh-ink); border-radius: 999px;
+  background: white; color: var(--hh-ink); text-decoration: none; cursor: pointer;
+}
+.hh-pill.on { background: var(--hh-sun); }
+
+.hh-eyebrow {
+  font-family: var(--hh-font-ui); font-weight: 600;
+  font-size: 14px; letter-spacing: 2px; text-transform: uppercase;
+  color: var(--hh-ink-soft);
+}
+.hh-title {
+  font-family: var(--hh-font-ui); font-weight: 700;
+  font-size: clamp(1.7rem, 6vw, 2.2rem); line-height: 1.1; margin: 0;
+}
+.hh-han-big {
+  font-family: var(--hh-font-han); font-weight: 500;
+  font-size: clamp(6rem, 22vw, 10rem); line-height: 1; color: var(--hh-ink);
+}
+.hh-han-word {
+  font-family: var(--hh-font-han); font-weight: 700;
+  font-size: clamp(2rem, 8vw, 2.8rem); line-height: 1.3;
+}
+.hh-han-inline { font-family: var(--hh-font-han); font-weight: 500; font-size: 1.2em; }
+.hh-han-fun { font-family: var(--hh-font-han-fun); }
+
+.hh-card {
+  background: white;
+  border: 4px solid var(--hh-ink); border-radius: 22px;
+  padding: 16px;
+}
+.hh-card.tinted-sun    { background: #FFF3C4; }
+.hh-card.tinted-blush  { background: #FFE1DD; }
+.hh-card.tinted-mint   { background: #DFF5D3; }
+.hh-card.tinted-sky    { background: #E5F6FE; }
+.hh-card.tinted-plum   { background: #F2E9FF; }
+
+.hh-btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  font-family: var(--hh-font-ui); font-weight: 700; font-size: 18px;
+  padding: 12px 20px; min-height: 52px;
+  border: 4px solid var(--hh-ink); border-radius: 999px;
+  background: white; color: var(--hh-ink); cursor: pointer;
+}
+.hh-btn.primary { background: var(--hh-ink); color: var(--hh-cream); }
+.hh-btn.sun { background: var(--hh-sun); }
+.hh-btn.block { width: 100%; }
+.hh-btn.small { min-height: 40px; padding: 8px 14px; font-size: 15px; }
+.hh-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+
+.hh-dot-row { display: flex; gap: 6px; justify-content: center; padding: 4px; }
+.hh-dot { width: 22px; height: 6px; border-radius: 999px; background: rgba(42,33,27,0.15); }
+.hh-dot.on { background: var(--hh-ink); }
+
+/* Unit map */
+.hh-map-grid { display: grid; gap: 10px; grid-template-columns: repeat(2, 1fr); }
+@media (min-width: 640px) { .hh-map-grid { grid-template-columns: repeat(3, 1fr); } }
+.hh-map-tile {
+  border: 4px solid var(--hh-ink); border-radius: 22px;
+  padding: 12px; background: white;
+  cursor: pointer; font: inherit; color: inherit;
+  display: flex; flex-direction: column; gap: 4px; text-align: left;
+  min-height: 108px;
+}
+.hh-map-tile.done { background: #FFF3C4; }
+.hh-map-tile.locked { background: var(--hh-cream); opacity: 0.5; cursor: not-allowed; }
+.hh-map-tile .num {
+  font-family: var(--hh-font-ui); font-weight: 700; font-size: 22px;
+}
+.hh-map-tile .part {
+  font-family: var(--hh-font-ui); font-weight: 600; font-size: 11px;
+  letter-spacing: 1.4px; text-transform: uppercase; color: var(--hh-ink-soft);
+}
+.hh-map-tile .name { font-family: var(--hh-font-ui); font-weight: 700; font-size: 16px; line-height: 1.15; }
+.hh-map-tile .han  { font-family: var(--hh-font-han); font-weight: 500; font-size: 22px; }
+
+/* Block-builder */
+.hh-block {
+  position: relative;
+  width: 220px; height: 220px;
+  border: 5px dashed var(--hh-ink); border-radius: 22px;
+  background: white; display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr;
+  overflow: hidden;
+}
+.hh-block.wide { grid-template-columns: 1fr; grid-template-rows: 1fr 1fr; }
+.hh-block.batchim { grid-template-rows: 2fr 1fr; }
+.hh-block.batchim.wide { grid-template-rows: 1fr 1fr 1fr; }
+.hh-slot {
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--hh-font-han); font-weight: 500; font-size: 88px;
+  color: var(--hh-ink);
+}
+.hh-slot.empty { color: rgba(42,33,27,0.25); font-family: var(--hh-font-ui); font-size: 36px; }
+.hh-slot.glow { background: #FFF3C4; box-shadow: inset 0 0 0 3px var(--hh-sun); }
+
+.hh-tray {
+  display: flex; gap: 8px; flex-wrap: wrap; justify-content: center;
+  padding: 8px;
+}
+.hh-tray .hh-letter-btn {
+  width: 74px; height: 74px; border-radius: 18px;
+  border: 4px solid var(--hh-ink); background: white;
+  font-family: var(--hh-font-han); font-weight: 500; font-size: 42px;
+  cursor: pointer;
+  color: var(--hh-ink);
+  display: flex; align-items: center; justify-content: center;
+}
+.hh-tray .hh-letter-btn.used { opacity: 0.3; cursor: default; }
+
+/* Romanisation line — always shown small and muted under the Korean. */
+.hh-roman { color: var(--hh-ink-soft); font-family: var(--hh-font-body); font-weight: 500; font-size: 15px; }
+/* Hangul-only mode: hide every roman line cleanly. `display:none` — surrounding blocks
+   simply collapse; no reflow of layout, no reserved gaps. */
+.hh.hangul-only .hh-roman { display: none !important; }
+
+/* Compound-vowel merge card */
+.hh-merge {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr auto 1.4fr;
+  gap: 10px;
+  align-items: center;
+  background: white;
+  border: 4px solid var(--hh-ink);
+  border-radius: 22px;
+  padding: 14px;
+}
+.hh-merge .hh-han-cell {
+  display: flex; flex-direction: column; align-items: center; gap: 2px;
+}
+.hh-merge .glyph {
+  font-family: var(--hh-font-han); font-weight: 500; font-size: 54px; line-height: 1; color: var(--hh-ink);
+}
+.hh-merge .op { font-family: var(--hh-font-ui); font-weight: 700; font-size: 24px; color: var(--hh-ink-soft); }
+.hh-merge .result {
+  border: 3px solid var(--hh-ink); border-radius: 16px; background: #FFF3C4;
+  padding: 8px 14px; display: flex; flex-direction: column; align-items: center;
+}
+.hh-merge .result.merging { animation: hh-merge-in 500ms cubic-bezier(0.34, 1.56, 0.64, 1) both; }
+@keyframes hh-merge-in {
+  0% { transform: scale(0.4); opacity: 0; }
+  70% { transform: scale(1.1); opacity: 1; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.hh-toggle {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 6px 12px;
+  border: 3px solid var(--hh-ink); border-radius: 999px;
+  background: white; cursor: pointer;
+  font-family: var(--hh-font-ui); font-weight: 600; font-size: 13px;
+  color: var(--hh-ink);
+}
+.hh-toggle.on { background: var(--hh-sun); }
+.hh-toggle .sw {
+  width: 28px; height: 16px; border-radius: 999px;
+  background: rgba(42,33,27,0.2);
+  position: relative;
+  transition: background 150ms ease;
+}
+.hh-toggle.on .sw { background: var(--hh-ink); }
+.hh-toggle .sw::after {
+  content: ''; position: absolute;
+  top: 2px; left: 2px;
+  width: 12px; height: 12px; border-radius: 50%;
+  background: white;
+  transition: transform 150ms ease;
+}
+.hh-toggle.on .sw::after { transform: translateX(12px); }
+
+@keyframes hh-fade { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+.hh-fade { animation: hh-fade 400ms ease-out both; }
+
+@keyframes hh-paper { 0%,100% { transform: rotate(0) translateY(0); } 50% { transform: rotate(3deg) translateY(-4px); } }
+.hh-paper { animation: hh-paper 1.2s ease-in-out infinite; transform-origin: bottom left; }
+
+@keyframes hh-paper-fly { 0% { transform: rotate(0) translate(0,0); } 100% { transform: rotate(-40deg) translate(180px, -90px); opacity: 0; } }
+.hh-paper.fly { animation: hh-paper-fly 900ms ease-out forwards; }

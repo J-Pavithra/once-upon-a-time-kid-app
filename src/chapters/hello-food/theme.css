@@ -1,0 +1,175 @@
+/* Hello, Food! — toddler design system (scoped to .hf) */
+.hf {
+  position: relative;
+  z-index: 1;
+
+  --hf-cream: #FFF5E4;
+  --hf-cream-2: #FFEACE;
+  --hf-ink: #2A211B;
+  --hf-ink-soft: #6B5A55;
+  --hf-blush: #FFD9C0;
+  --hf-mint: #C9E9C7;
+  --hf-butter: #FFE49A;
+  --hf-sky: #C7E7F5;
+  --hf-berry: #F19A8E;
+  --hf-leaf: #7DBB6E;
+  --hf-carrot: #E8763A;
+  --hf-brown: #7A4A2F;
+  --hf-border: 5px;
+  --hf-radius: 28px;
+  --hf-font-display: 'Fredoka', system-ui, sans-serif;
+
+  min-height: 100vh;
+  background: var(--hf-cream);
+  color: var(--hf-ink);
+  font-family: var(--hf-font-display);
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 1.35;
+}
+.hf * { box-sizing: border-box; }
+
+.hf-app {
+  max-width: 720px; margin: 0 auto;
+  padding: 12px 16px 24px;
+  min-height: 100vh;
+  display: flex; flex-direction: column;
+  gap: 10px;
+  position: relative;
+}
+.hf-topbar {
+  display: flex; align-items: center; gap: 10px; padding: 4px;
+  min-height: 44px;
+}
+.hf-topbar .spacer { flex: 1; }
+
+.hf-pill {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 6px 14px;
+  font-family: var(--hf-font-display); font-weight: 700; font-size: 15px;
+  border: 3px solid var(--hf-ink); border-radius: 999px;
+  background: white; color: var(--hf-ink);
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.hf-scene {
+  flex: 1;
+  min-height: 55vh;
+  border: var(--hf-border) solid var(--hf-ink);
+  border-radius: var(--hf-radius);
+  background: white;
+  padding: 12px;
+  display: flex; align-items: center; justify-content: center;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;
+}
+.hf-scene.blush   { background: var(--hf-blush); }
+.hf-scene.mint    { background: var(--hf-mint); }
+.hf-scene.butter  { background: var(--hf-butter); }
+.hf-scene.sky     { background: var(--hf-sky); }
+.hf-scene.cream   { background: var(--hf-cream-2); }
+
+.hf-word {
+  font-family: var(--hf-font-display); font-weight: 700;
+  font-size: clamp(2.4rem, 8vw, 3.4rem);
+  color: var(--hf-ink);
+  letter-spacing: -0.5px;
+  line-height: 1;
+  margin: 0;
+  text-align: center;
+}
+.hf-adj {
+  font-family: var(--hf-font-display); font-weight: 500;
+  font-size: clamp(1.2rem, 4vw, 1.6rem);
+  color: var(--hf-ink-soft);
+  margin: 4px 0 0;
+  text-align: center;
+}
+
+.hf-tap-hint {
+  position: absolute;
+  left: 50%; bottom: 14px; transform: translateX(-50%);
+  padding: 6px 14px;
+  font-family: var(--hf-font-display); font-weight: 600; font-size: 14px;
+  background: rgba(255,255,255,0.9);
+  border: 2px solid var(--hf-ink); border-radius: 999px;
+  animation: hf-tap 1.6s ease-in-out infinite;
+  pointer-events: none;
+}
+@keyframes hf-tap { 0%, 100% { transform: translate(-50%, 0); } 50% { transform: translate(-50%, -6px); } }
+
+.hf-btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  font-family: var(--hf-font-display); font-weight: 700; font-size: 20px;
+  padding: 14px 24px;
+  border: var(--hf-border) solid var(--hf-ink);
+  border-radius: 999px;
+  background: var(--hf-butter); color: var(--hf-ink);
+  cursor: pointer;
+  min-height: 60px;
+}
+.hf-btn:active { transform: translateY(2px); }
+
+.hf-dot-row { display: flex; gap: 8px; justify-content: center; padding: 4px; }
+.hf-dot {
+  width: 34px; height: 8px; border-radius: 999px;
+  background: rgba(42,33,27,0.15);
+}
+.hf-dot.on { background: var(--hf-ink); }
+
+.hf-grownup {
+  border: var(--hf-border) solid var(--hf-ink);
+  border-radius: var(--hf-radius);
+  background: var(--hf-cream-2);
+  padding: 20px;
+  display: flex; gap: 12px; align-items: center;
+}
+.hf-grownup .icon { font-size: 32px; }
+.hf-grownup .label {
+  font-family: var(--hf-font-display); font-weight: 700;
+  font-size: 13px; letter-spacing: 1.5px; text-transform: uppercase;
+  color: var(--hf-ink-soft);
+}
+.hf-grownup .tip {
+  font-family: var(--hf-font-display); font-weight: 500;
+  font-size: 18px; line-height: 1.35; color: var(--hf-ink);
+  margin-top: 2px;
+}
+
+/* Kitchen shelf */
+.hf-shelf {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+@media (max-width: 480px) {
+  .hf-shelf { grid-template-columns: repeat(3, 1fr); }
+}
+.hf-tile {
+  aspect-ratio: 1;
+  border: var(--hf-border) solid var(--hf-ink);
+  border-radius: var(--hf-radius);
+  background: white;
+  padding: 8px;
+  display: flex; align-items: center; justify-content: center;
+  position: relative;
+  cursor: pointer;
+  overflow: hidden;
+}
+.hf-tile.met    { background: white; }
+.hf-tile.unmet  { background: var(--hf-cream-2); filter: grayscale(0.7) opacity(0.5); cursor: default; }
+.hf-tile .name-chip {
+  position: absolute;
+  bottom: 6px; left: 50%; transform: translateX(-50%);
+  background: var(--hf-cream); border: 2px solid var(--hf-ink); border-radius: 999px;
+  padding: 2px 8px;
+  font-family: var(--hf-font-display); font-weight: 700; font-size: 13px;
+}
+
+.hf-basket-bg {
+  background: repeating-linear-gradient(45deg, #E4C88A, #E4C88A 8px, #D3B26D 8px, #D3B26D 16px);
+}
